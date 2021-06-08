@@ -10,7 +10,7 @@ import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, PaginaPrincipalComponent, InicioSesionComponent
   ],
   imports: [
     BrowserModule,
