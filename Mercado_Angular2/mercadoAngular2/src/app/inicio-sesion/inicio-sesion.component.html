@@ -1,3 +1,15 @@
-<p>
-  inicio-sesion works!
-</p>
+<div class = "col-sm-6 well col-sm-offset-3">
+  <h1>Inicio Sesion</h1>
+  <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()"> 
+    <div class="form-group">
+      <label for ="correo-input"></label>
+      <input type="email" class="form-control" id ="correo-input"  formControlName="correo">
+      <label *ngIf="!miFormulario.controls['correo'].valid">Debe ingresar un correo electronico valido</label>
+    </div>
+    <div class="form-group">
+      <label for ="password-input">Contraseña</label>
+      <input type="password" class="form-control" id ="password-input" formControlName="password">
+    </div>
+    <button type="submit" class="btn btn-success center-block"[disabled]="!miFormulario.valid">Ingresar</button>
+  </form>
+</div>>

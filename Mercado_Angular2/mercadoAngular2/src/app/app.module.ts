@@ -1,7 +1,7 @@
 import {routing} from  './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -10,13 +10,17 @@ import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaginaPrincipalComponent,
+    InicioSesionComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
