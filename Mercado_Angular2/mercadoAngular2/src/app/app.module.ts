@@ -10,6 +10,8 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
 
 
+
+
 @NgModule({
   declarations: [
 //<<<<<<< HEAD
