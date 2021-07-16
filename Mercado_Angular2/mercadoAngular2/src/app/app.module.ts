@@ -12,6 +12,7 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
 @NgModule({
   declarations: [
+<<<<<<< HEAD
 //<<<<<<< HEAD
     //AppComponent, PaginaPrincipalComponent, InicioSesionComponent
 //=======
@@ -19,6 +20,11 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
     PaginaPrincipalComponent,
     InicioSesionComponent
 //>>>>>>> 209fd19d004c7a8ab899fb84a9e70e5857edab37
+=======
+    AppComponent,
+    PaginaPrincipalComponent,
+    InicioSesionComponent
+>>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
   ],
   imports: [
     BrowserModule,

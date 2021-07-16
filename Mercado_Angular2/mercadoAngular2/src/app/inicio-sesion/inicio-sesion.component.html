@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- inicio sesión-->
 
 <div class="login">
@@ -184,4 +185,21 @@
     </form>
   </div>
 >>>>>>> 209fd19d004c7a8ab899fb84a9e70e5857edab37
+=======
+<div class="container">
+  <h1>Inicio de Sesion</h1>
+
+  <form [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>
+    <div>
+      <label>Correo Electrónico:</label>
+      <input formControlName="email" type="text" placeholder="company"/>
+    </div>
+    <div *ngIf="myForm.get('email').errors && myForm.get('email)'.dirty">
+      <p *ngIf="myForm.get('email').hasError('required')">el campo es requerido</p>
+    </div>
+    <div>
+      <button type="submit" [disabled] = "myForm.invalid">Save</button>
+    </div>
+  </form>
+>>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
 </div>

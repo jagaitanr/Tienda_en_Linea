@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 //import {InicioSesionComponent} from './inicio-sesion.component'
 import {
   FormGroup,
@@ -9,6 +10,12 @@ import {
 
 import {userAsyncValidator } from './ValidatorsForms/usuario.directive';
 import {UserService } from './Services/user.service';
+=======
+import {  FormGroup,   FormBuilder,   FormControl,   Validators } from "@angular/forms";
+
+//import {userAsyncValidator } from './ValidatorsForms/usuario.directive';
+//import {UserService } from './Services/user.service';
+>>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
 
 
 @Component({
@@ -17,11 +24,13 @@ import {UserService } from './Services/user.service';
   styleUrls: ['./inicio-sesion.component.css']
   
 })
+
 export class InicioSesionComponent implements OnInit {
   email: string;
   password: string;
 
   titulo = 'esta es mi página de inicio de sesion';
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   ngOnInit() {
@@ -47,3 +56,25 @@ export class InicioSesionComponent implements OnInit {
   }
  public sendLogin(){}
 }
+=======
+  nombreUsuario = 'PepitoPerez';
+  contraseña  = '12345';
+
+  
+    //  public loginForm:FormGroup;
+    /* constructor(private fb:FormBuilder) {
+    
+    }
+    */
+    myForm: FormGroup;
+    constructor(public fb:FormBuilder)
+    {
+      this.myForm = this.fb.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      });
+    }
+    ngOnInit() {}
+    saveData(){console.log(this.myForm.value);} 
+  }
+>>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
