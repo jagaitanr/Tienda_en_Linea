@@ -1,0 +1,28 @@
+h2{
+    color:white;
+}
+
+h3{
+    color:white;
+}
+
+
+h5{
+    color:white;
+}
+
+.form-control{
+    background-color:white;
+    height:2em;
+    border-radius: 5px;
+}
+
+.btn {
+    /*background-color:#58A95C;*/
+    background-color:red;
+    
+    color:black;
+}
+.valign-wrapper{
+    height:50em;
+}

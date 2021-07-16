@@ -14,7 +14,7 @@ export class InicioSesionComponent implements OnInit {
 
   ngOnInit() {
     this.miFormulario = new FormGroup({
-      'correo' :new FormControl('correo electronico', Validators.required),
+      'correo' :new FormControl('', Validators.required),
       'password' :new FormControl('', Validators.required),
     })
   }
