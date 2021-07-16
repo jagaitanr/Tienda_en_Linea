@@ -1,19 +1,24 @@
-import {routing} from  './app.routing';
+import { routing } from  './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {PaginaPrincipalComponent} from './pagina-principal/pagina-principal.component';
-import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
+import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PaginaPrincipalComponent,
     InicioSesionComponent
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/main
   ],
   imports: [
     BrowserModule,
@@ -21,6 +26,10 @@ import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
     HttpModule,
     routing,
     ReactiveFormsModule
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/main
   ],
   providers: [],
   bootstrap: [AppComponent]

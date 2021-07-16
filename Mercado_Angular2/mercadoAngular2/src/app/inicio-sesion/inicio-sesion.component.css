@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h2{
     color:white;
 }
@@ -26,3 +27,34 @@ h5{
 .valign-wrapper{
     height:50em;
 }
+=======
+.walkP {
+    animation-name: walk;
+    animation-duration: 1s;
+    margin-left: 0%;
+    opacity: 1;
+  }
+  .iconP {
+    opacity: 1;
+    animation-name: op;
+    animation-duration: 1s;
+  }
+  @keyframes walk {
+    from {
+      margin-left: 30%;
+      opacity: 0;
+    }
+    to {
+      margin-left: 0%;
+      opacity: 1;
+    }
+  }
+  @keyframes op {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+>>>>>>> origin/main
