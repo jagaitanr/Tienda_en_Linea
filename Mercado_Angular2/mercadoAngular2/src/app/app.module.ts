@@ -10,15 +10,15 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
 
 
+
+
 @NgModule({
   declarations: [
+
     AppComponent,
     PaginaPrincipalComponent,
     InicioSesionComponent
-<<<<<<< HEAD
-    
-=======
->>>>>>> origin/main
+
   ],
   imports: [
     BrowserModule,
@@ -26,10 +26,7 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
     HttpModule,
     routing,
     ReactiveFormsModule
-<<<<<<< HEAD
-=======
     
->>>>>>> origin/main
   ],
   providers: [],
   bootstrap: [AppComponent]

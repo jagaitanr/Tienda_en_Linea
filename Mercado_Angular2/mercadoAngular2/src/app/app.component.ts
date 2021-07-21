@@ -4,12 +4,6 @@ import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
 import {PaginaPrincipalComponent} from './pagina-principal/pagina-principal.component';
 
 
-=======
-//import {InicioSesionComponent} from './inicio-sesion.component';
-//import {PaginaPrincipalComponent} from './pagina-principal.component';
-import {PaginaPrincipalComponent} from './pagina-principal/pagina-principal.component';
-import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
->>>>>>> origin/main
 
 
 @Component({
