@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
+
 import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
 import {PaginaPrincipalComponent} from './pagina-principal/pagina-principal.component';
 
