@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 h2{
     color:white;
 }
@@ -27,7 +26,6 @@ h5{
 .valign-wrapper{
     height:50em;
 }
-=======
 .walkP {
     animation-name: walk;
     animation-duration: 1s;
@@ -57,4 +55,3 @@ h5{
       opacity: 1;
     }
   }
->>>>>>> origin/main

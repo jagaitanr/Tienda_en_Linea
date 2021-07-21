@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
   <div class="row">
       <div class= "col l4 s4 m4 valign-wrapper  "></div>
@@ -23,21 +23,3 @@
         </div>
       <div class= "col l4 s4 m4 "></div>
   </div>
-=======
-<div class="container">
-  <h1>Inicio de Sesion</h1>
-
-  <form [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>
-    <div>
-      <label>Correo Electrónico:</label>
-      <input formControlName="email" type="text" placeholder="company"/>
-    </div>
-    <div *ngIf="myForm.get('email').errors && myForm.get('email)'.dirty">
-      <p *ngIf="myForm.get('email').hasError('required')">el campo es requerido</p>
-    </div>
-    <div>
-      <button type="submit" [disabled] = "myForm.invalid">Save</button>
-    </div>
-  </form>
-</div>
->>>>>>> origin/main
