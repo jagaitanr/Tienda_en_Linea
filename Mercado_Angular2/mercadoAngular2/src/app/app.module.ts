@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
 
 
 
@@ -17,7 +18,8 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
     AppComponent,
     PaginaPrincipalComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
+    BarraSuperiorComponent
 
   ],
   imports: [

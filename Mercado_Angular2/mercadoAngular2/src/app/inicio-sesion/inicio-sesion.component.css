@@ -3,7 +3,7 @@
   width: 100%;
       background-image:url('../assets/imagenesBase/login-fondo.jpg');
   }
-  
+
 
 
 h2{
@@ -28,7 +28,7 @@ h5{
 .btn {
     /*background-color:#58A95C;*/
     background-color:red;
-    
+
     color:black;
 }
 .valign-wrapper{
