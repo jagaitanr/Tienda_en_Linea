@@ -1,3 +1,7 @@
+.container{
+background-image:url('../assets/imagenesBase/login-fondo.jpg');
+}
+
 h2{
     color:white;
 }
