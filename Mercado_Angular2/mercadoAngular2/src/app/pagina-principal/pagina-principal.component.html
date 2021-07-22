@@ -1,3 +1,25 @@
-<p>
-  pagina-principal works!
-</p>
+<div class = container>
+  <div class="row">
+      <div class= "col l4 s4 m4 valign-wrapper  "></div>
+      <div class= "col l4 s4 m4 valign-wrapper ">
+          <div class= "col l12 s12 m12  center ">
+            <h3>Inicio Sesión</h3>
+            <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
+            <div class="form-group left-align">
+              <h5 >Correo Electrónico:</h5>
+              <input card-white type="email" class="form-control" id="correo-input" formControlName="correo">
+              <label *ngIf="!miFormulario.controls['correo'].valid">Debe ingresar un correo electronico valido</label>
+            </div>
+            <div class="form-group left-align">
+              <h5 right-align>Contraseña:</h5>
+              <input type="password" class="form-control" id="password-input" formControlName="password">
+            </div>
+              
+                <button type="submit"  style="background-color:red; color:white" class=" btn btn-success center-block color:(red)" [disabled]="!miFormulario.valid">Ingresar</button>
+              
+          </form>
+          </div>
+        </div>
+      <div class= "col l4 s4 m4 "></div>
+  </div>
+</div>
