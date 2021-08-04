@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
-
+import { CatalogoComponent } from './catalogo/catalogo.component';
 
 
 
@@ -19,7 +19,8 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
     AppComponent,
     PaginaPrincipalComponent,
     InicioSesionComponent,
-    BarraSuperiorComponent
+    BarraSuperiorComponent,
+    CatalogoComponent
 
   ],
   imports: [

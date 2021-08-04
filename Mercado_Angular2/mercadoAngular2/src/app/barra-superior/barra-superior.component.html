@@ -1,12 +1,23 @@
 <div class = "container2">
-  <div class = "logo-container">
-    <h2>App</h2>
-  </div>
-    <div class ="menu">
-      <ul>
-        <li>Inicio</li>
-        <li>Mi perfil</li>
-        <li>Cerrar sesion</li>
-      </ul>
+  <div class = "row">
+    <div class = "col l4 m4 s4">
+    <h5>La bodega</h5>
     </div>
+    <div class = "col l8 m8 s8">
+      <div class ="menu">
+       <ul class="nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['catalogo']"><i class = "material-icons small">apps</i></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['pagina-principal']"><i class = "material-icons small">shopping_cart</i></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['inicio-sesion']"><i class = "material-icons small">exit_to_apps</i></a>
+        </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

@@ -6,7 +6,7 @@
       <div class= "col l4 s4 m4 valign-wrapper ">
           <div class= "col l12 s12 m12  center ">
             <h3>Inicio Sesión</h3>
-            <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
+            <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario(f)" #f="ngForm">
             <div class="form-group left-align">
               <h5 >Correo Electrónico:</h5>
               <input card-white type="email" class="form-control" id="correo-input" formControlName="correo">
@@ -18,10 +18,14 @@
             </div>
 
                 <button type="submit"  style="background-color:red; color:white" class=" btn btn-success center-block color:(red)" [disabled]="!miFormulario.valid">Ingresar</button>
-
+                
           </form>
           </div>
         </div>
       <div class= "col l4 s4 m4 "></div>
+      <router-outlet></router-outlet>
   </div>
+  
 </div>
+
+

@@ -1,64 +1,10 @@
-.container{
+.container2{
     height: 100%;
     width: 100%;
     background-image:url('../assets/imagenesBase/main-fondo.jpg');
 }
 
-
-h2{
-    color:white;
+.barra{
+  margin-top: 2em;
+  
 }
-
-h3{
-    color:white;
-}
-
-
-h5{
-    color:white;
-}
-
-.form-control{
-    background-color:white;
-    height:2em;
-    border-radius: 5px;
-}
-
-.btn {
-    /*background-color:#58A95C;*/
-    background-color:red;
-
-    color:black;
-}
-.valign-wrapper{
-    height:50em;
-}
-.walkP {
-    animation-name: walk;
-    animation-duration: 1s;
-    margin-left: 0%;
-    opacity: 1;
-  }
-  .iconP {
-    opacity: 1;
-    animation-name: op;
-    animation-duration: 1s;
-  }
-  @keyframes walk {
-    from {
-      margin-left: 30%;
-      opacity: 0;
-    }
-    to {
-      margin-left: 0%;
-      opacity: 1;
-    }
-  }
-  @keyframes op {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
