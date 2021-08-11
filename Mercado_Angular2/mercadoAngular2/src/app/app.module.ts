@@ -17,7 +17,7 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
   declarations: [
     AppComponent,
     PaginaPrincipalComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
 
     BarraSuperiorComponent,
     CatalogoComponent
