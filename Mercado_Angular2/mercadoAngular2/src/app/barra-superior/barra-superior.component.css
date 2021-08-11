@@ -1,0 +1,64 @@
+
+
+.container2{
+    height: 3em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    background-color: #F8F8F8;
+    }
+
+/*
+.logo-container{
+    width: 30%;
+    height: 10px;
+}
+
+.logo-container h4{
+    color: #696969;
+}
+
+.menu{
+    width: 40%;
+}
+
+.menu ul{
+    display: none;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.menu ul li{
+    color: #696969;
+    font-size: 1.3em;
+}
+
+*/
+.menu{
+    width: 40%;
+    float: right;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden;*/
+    background-color: #F8F8F8;
+}
+
+li {
+    float: right;
+    }
+
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #FAFAFA;
+}
+
+.material-icons{
+    color: gray;
+}

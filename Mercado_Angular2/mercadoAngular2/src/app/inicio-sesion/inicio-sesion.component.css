@@ -1,3 +1,39 @@
+.container{
+  height: 100%;
+  width: 100%;
+      background-image:url('../assets/imagenesBase/login-fondo.jpg');
+  }
+
+
+
+h2{
+    color:white;
+}
+
+h3{
+    color:white;
+}
+
+
+h5{
+    color:white;
+}
+
+.form-control{
+    background-color:white;
+    height:2em;
+    border-radius: 5px;
+}
+
+.btn {
+    /*background-color:#58A95C;*/
+    background-color:red;
+
+    color:black;
+}
+.valign-wrapper{
+    height:50em;
+}
 .walkP {
     animation-name: walk;
     animation-duration: 1s;

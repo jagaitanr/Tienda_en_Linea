@@ -1,80 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-//import {InicioSesionComponent} from './inicio-sesion.component'
-import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
-  Validators
-} from "@angular/forms";
-
-import {userAsyncValidator } from './ValidatorsForms/usuario.directive';
-import {UserService } from './Services/user.service';
-=======
-import {  FormGroup,   FormBuilder,   FormControl,   Validators } from "@angular/forms";
-
-//import {userAsyncValidator } from './ValidatorsForms/usuario.directive';
-//import {UserService } from './Services/user.service';
->>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
-
+import { FormControl, FormGroup, Validator, Validators } from  '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
   styleUrls: ['./inicio-sesion.component.css']
-  
+
 })
 
 export class InicioSesionComponent implements OnInit {
-  email: string;
-  password: string;
 
-  titulo = 'esta es mi página de inicio de sesion';
-<<<<<<< HEAD
+  miFormulario: FormGroup;
+  constructor(private router: Router) { }
 
-<<<<<<< HEAD
   ngOnInit() {
-    console.log(this.email);
-    console.log(this.password);
+    this.miFormulario = new FormGroup({
+      /*'correo' :new FormControl('', Validators.required),
+      'password' :new FormControl('', Validators.required),*/
+      'correo' :new FormControl(null, Validators.required),
+      'password' :new FormControl(null, Validators.required),
+    })
   }
-=======
-  nombreUsuario = 'PepitoPerez';
-  contraseña  = '12345';
->>>>>>> 209fd19d004c7a8ab899fb84a9e70e5857edab37
+/*
+enviarFormulario(){
+  console.log(this.miFormulario);
+}*/
 
-  
-  public loginForm:FormGroup;
-  constructor(private fb:FormBuilder) {
-    
-   }
+enviarFormulario(){
+  let email_ = this.miFormulario.get('correo').value;
+  let password_ = this.miFormulario.get('password').value;
 
-  public ngOnInit() {
-    this.loginForm = this.fb.group({
-      usuario: new FormControl("", [Validators.required], [userAsyncValidator(this.userService)]),
-      email: new FormControl("",[Validators.required,Validators.email]),
-      password: new FormControl("",[Validators.required,Validators.minLength(6)])
+
+  if (email_ ==='jagaitanr@hotmail.com' &&  password_ === '1234'){
+    this.router.navigate(['/pagina-principal']);
   }
- public sendLogin(){}
+
 }
-=======
-  nombreUsuario = 'PepitoPerez';
-  contraseña  = '12345';
 
-  
-    //  public loginForm:FormGroup;
-    /* constructor(private fb:FormBuilder) {
-    
-    }
-    */
-    myForm: FormGroup;
-    constructor(public fb:FormBuilder)
-    {
-      this.myForm = this.fb.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      });
-    }
-    ngOnInit() {}
-    saveData(){console.log(this.myForm.value);} 
-  }
->>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
+}

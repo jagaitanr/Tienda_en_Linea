@@ -1,0 +1,10 @@
+.container2{
+    height: 100%;
+    width: 100%;
+    background-image:url('../assets/imagenesBase/main-fondo.jpg');
+}
+
+.barra{
+  margin-top: 2em;
+  
+}

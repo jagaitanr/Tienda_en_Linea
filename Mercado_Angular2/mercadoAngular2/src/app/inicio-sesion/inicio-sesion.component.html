@@ -1,205 +1,28 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<!-- inicio sesión-->
 
-<div class="login">
-  <form class="custom-form" method="post">
-    <h1>Inicia Sesión</h1>
-    <input 
-    type = "email"
-    [(ngModel)]="email"
-    name="email"
-    placeholder="Correo electrónico"
-    required="required"
-    />
-    <input
-    type = "password"
-    [(ngModel)]="password"
-    name="password"
-    placeholder="Contraseña"
-    required="required"
-    />    
-  <button type="submit" (click)="login()">Ingresar</button>
-  </form>
+  <div class = container>
+  <div class="row">
+      <div class= "col l4 s4 m4 valign-wrapper  "></div>
+      <div class= "col l4 s4 m4 valign-wrapper ">
+          <div class= "col l12 s12 m12  center ">
+            <h3>Inicio Sesión</h3>
+            <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario(f)" #f="ngForm">
+            <div class="form-group left-align">
+              <h5 >Correo Electrónico:</h5>
+              <input card-white type="email" class="form-control" id="correo-input" formControlName="correo">
+              <label *ngIf="!miFormulario.controls['correo'].valid">Debe ingresar un correo electronico valido</label>
+            </div>
+            <div class="form-group left-align">
+              <h5 right-align>Contraseña:</h5>
+              <input type="password" class="form-control" id="password-input" formControlName="password">
+            </div>
 
-=======
-<div class="columns">
-  <div class="column is-three-fifths is-offset-one-fifth">
-    <form [formGroup]="loginForm" (onSubmit)="sendLogin()">
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input
-            class="input"
-            type="email"
-            placeholder="Ingrese Email"
-            formControlName="email"
-            [ngClass]="{
-              'is-danger':
-                loginForm.controls['email'].dirty &&
-                loginForm.controls['email'].errors,
-              'is-success':
-                loginForm.controls['email'].dirty &&
-                !loginForm.controls['email'].errors
-            }"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <span
-            class="icon is-small is-right iconP"
-            *ngIf="
-              (loginForm.controls['email'].dirty ||
-                loginForm.controls['email'].touched) &&
-              !loginForm.controls['email'].errors
-            "
-          >
-            <i class="fas fa-check"></i>
-          </span>
-          <span
-            class="icon is-small is-right iconP"
-            *ngIf="
-              (loginForm.controls['email'].dirty ||
-                loginForm.controls['email'].touched) &&
-              loginForm.controls['email'].errors
-            "
-          >
-            <i class="fas fa-exclamation-triangle"></i>
-          </span>
+                <button type="submit"  style="background-color:red; color:white" class=" btn btn-success center-block color:(red)" [disabled]="!miFormulario.valid">Ingresar</button>
+
+          </form>
+          </div>
         </div>
-        <p
-          class="help is-success walkP"
-          *ngIf="
-            (loginForm.controls['email'].dirty ||
-              loginForm.controls['email'].touched) &&
-            !loginForm.controls['email'].errors
-          "
-        >
-          El email es válido
-        </p>
-        <p
-          class="help is-danger walkP"
-          *ngIf="
-            (loginForm.controls['email'].dirty ||
-              loginForm.controls['email'].touched) &&
-            loginForm.controls['email'].errors &&
-            loginForm.controls['email'].errors.email
-          "
-        >
-          El email es inválido
-        </p>
-        <p
-          class="help is-danger walkP"
-          *ngIf="
-            (loginForm.controls['email'].dirty ||
-              loginForm.controls['email'].touched) &&
-            loginForm.controls['email'].errors &&
-            loginForm.controls['email'].errors.required
-          "
-        >
-          El email es requerido
-        </p>
-      </div>
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control has-icons-left has-icons-right">
-          <input
-            class="input is-danger"
-            type="password"
-            placeholder="Password"
-            formControlName="password"
-            [ngClass]="{
-              'is-danger':
-                loginForm.controls['password'].dirty &&
-                loginForm.controls['password'].errors,
-              'is-success':
-                loginForm.controls['password'].dirty &&
-                !loginForm.controls['password'].errors
-            }"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-key"></i>
-          </span>
-          <span
-            class="icon is-small is-right iconP"
-            *ngIf="
-              (loginForm.controls['password'].dirty ||
-                loginForm.controls['password'].touched) &&
-              !loginForm.controls['password'].errors
-            "
-          >
-            <i class="fas fa-check"></i>
-          </span>
-          <span
-            class="icon is-small is-right iconP"
-            *ngIf="
-              (loginForm.controls['password'].dirty ||
-                loginForm.controls['password'].touched) &&
-              loginForm.controls['password'].errors
-            "
-          >
-            <i class="fas fa-exclamation-triangle"></i>
-          </span>
-        </div>
-        <p
-          class="help is-success walkP"
-          *ngIf="
-            (loginForm.controls['password'].dirty ||
-              loginForm.controls['password'].touched) &&
-            !loginForm.controls['password'].errors
-          "
-        >
-          Este password es válido
-        </p>
-        <p
-          class="help is-danger walkP"
-          *ngIf="
-            (loginForm.controls['password'].dirty ||
-              loginForm.controls['password'].touched) &&
-            loginForm.controls['password'].errors &&
-            loginForm.controls['password'].errors.minlength
-          "
-        >
-          El password debe ser mayor a 6 digitos
-        </p>
-        <p
-          class="help is-danger walkP"
-          *ngIf="
-            (loginForm.controls['password'].dirty ||
-              loginForm.controls['password'].touched) &&
-            loginForm.controls['password'].errors &&
-            loginForm.controls['password'].errors.required
-          "
-        >
-          El password es requerido
-        </p>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button type="submit" class="button is-link" [disabled]="!loginForm.valid">Enviar</button>
-        </div>
-        <div class="control">
-          <button class="button is-link is-light">Cancelar</button>
-        </div>
-      </div>
-    </form>
+      <div class= "col l4 s4 m4 "></div>
+
   </div>
->>>>>>> 209fd19d004c7a8ab899fb84a9e70e5857edab37
-=======
-<div class="container">
-  <h1>Inicio de Sesion</h1>
 
-  <form [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>
-    <div>
-      <label>Correo Electrónico:</label>
-      <input formControlName="email" type="text" placeholder="company"/>
-    </div>
-    <div *ngIf="myForm.get('email').errors && myForm.get('email)'.dirty">
-      <p *ngIf="myForm.get('email').hasError('required')">el campo es requerido</p>
-    </div>
-    <div>
-      <button type="submit" [disabled] = "myForm.invalid">Save</button>
-    </div>
-  </form>
->>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
 </div>

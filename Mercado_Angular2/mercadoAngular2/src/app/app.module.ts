@@ -7,24 +7,21 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
+import { CatalogoComponent } from './catalogo/catalogo.component';
+
 
 
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
-//<<<<<<< HEAD
-    //AppComponent, PaginaPrincipalComponent, InicioSesionComponent
-//=======
     AppComponent,
     PaginaPrincipalComponent,
     InicioSesionComponent
-//>>>>>>> 209fd19d004c7a8ab899fb84a9e70e5857edab37
-=======
-    AppComponent,
-    PaginaPrincipalComponent,
-    InicioSesionComponent
->>>>>>> 8dd7649f779bfcc2a12d0c7abe27fbad01f2ceb0
+
+    BarraSuperiorComponent,
+    CatalogoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +29,7 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
     HttpModule,
     routing,
     ReactiveFormsModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
