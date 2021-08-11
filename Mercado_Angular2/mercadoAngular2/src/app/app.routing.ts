@@ -14,7 +14,9 @@ const appRoutes = [
     {path:'pagina-principal', component: PaginaPrincipalComponent, pathMatch: 'full'},
      {path:'inicio-sesion', component: InicioSesionComponent,  pathMatch: 'full'},
      {path:'barra-superior', component: BarraSuperiorComponent,  pathMatch: 'full'},
-     {path:'catalogo', component: BarraSuperiorComponent,  pathMatch: 'full'}
+     {path:'catalogo', component: BarraSuperiorComponent,  pathMatch: 'full'},
+    
+    {path: '**', redirectTo: 'inicio-sesion'}
     ];
 
 export const routing = RouterModule.forRoot (appRoutes);
