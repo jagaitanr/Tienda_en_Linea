@@ -15,7 +15,8 @@ const appRoutes = [
      {path:'inicio-sesion', component: InicioSesionComponent,  pathMatch: 'full'},
      {path:'barra-superior', component: BarraSuperiorComponent,  pathMatch: 'full'},
      {path:'catalogo', component: BarraSuperiorComponent,  pathMatch: 'full'},
-     //{patch:'*.*', component: InicioSesionComponent,  pathMatch: 'full'}
+
+    {path: '**', redirectTo: 'inicio-sesion'}
     ];
 
 export const routing = RouterModule.forRoot (appRoutes);
