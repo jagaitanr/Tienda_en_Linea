@@ -11,8 +11,6 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
 import { CatalogoComponent } from './catalogo/catalogo.component';
 
 
-
-
 @NgModule({
   declarations: [
 
@@ -28,7 +26,8 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
     FormsModule,
     HttpModule,
     routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
     
   ],
   providers: [],

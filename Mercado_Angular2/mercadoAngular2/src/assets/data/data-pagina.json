@@ -1,0 +1,16 @@
+{
+    "vegetales":[
+    {
+    "imagen":"../../../assets/aguacate.jpg",
+    "nombre":"aguacate",
+    "precio":2500,
+    "unidades-disponibles":100
+    },
+    {
+    "imagen":"../../../assets/ajo.jpg",
+    "nombre":"ajo",
+    "precio":3000,
+    "unidades-disponibles":120
+    }
+    ]
+    }
