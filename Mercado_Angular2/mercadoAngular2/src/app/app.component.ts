@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {InicioSesionComponent} from './inicio-sesion/inicio-sesion.component';
 import {PaginaPrincipalComponent} from './pagina-principal/pagina-principal.component';
 import { InfoPaginaService } from './info-pagina.service';
+//import listadodeVegetales from '../assets/database/databasevegetales.json';
 
 
 
@@ -15,5 +16,5 @@ import { InfoPaginaService } from './info-pagina.service';
 export class AppComponent {
   title = 'Mercado !';
 
-  constructor(public infoPagina:InfopaginaService)
+ // constructor(public infoPagina:InfopaginaService)
 }
