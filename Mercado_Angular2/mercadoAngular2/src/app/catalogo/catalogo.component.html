@@ -4,12 +4,35 @@
     <div class ="col l3 s3 m3 valign-wrapper"></div>
     <div class ="col l3 s3 m3 valign-wrapper">
       <div class= "row">¿Qué estás buscando?</div>
-      <div class= "row">buscar</div>
+        <div class= "row">
+          <input type= "text" class= "form-control buscar" placeholder="Buscar" [(ngModel)]="filtro"/>
+        </div>  
     </div>
     
   </div>
   <div class = "row">
     <h1>productos</h1>
+
+
+    <!--<ul *ngFor="let item of listadeProductos | filtrobuscar: ['nombre']:filtro">
+      <ul *ngFor="let item of listadeProductos">
+      <li>
+        
+         <h3>nombre :{{item.nombre}}, precio: {{item.precio}}</h3>
+      </li>
+   </ul>
+  -->
+  <div class = "card" *ngFor="let item of listadeProductos">
+    <img src={{item.imagen}} alt="">
+    <h6>Producto: {{item.nombre}}</h6>
+    <p>Precio:{{item.precio}}</p>
+    <h6>Unid. En Existencia: {{item.unidadesDisponibles}}</h6>
+      <button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>
+      <app-detalleproducto [nombre]= "item.nombre"></app-detalleproducto>
+      <button id= "btncompra" class="btn-small amber ligthen-4 rigth">añadir</button>
+      <input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="cantidad">
+    </div>
+   
   </div>
   
 </div>

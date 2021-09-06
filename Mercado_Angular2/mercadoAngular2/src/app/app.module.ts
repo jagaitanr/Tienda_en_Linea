@@ -7,14 +7,21 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-
+import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
+import { CatalogoComponent } from './catalogo/catalogo.component';
+import { FiltrobuscarPipe } from './filtrobuscar.pipe';
+import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PaginaPrincipalComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
+    BarraSuperiorComponent,
+    CatalogoComponent,
+    FiltrobuscarPipe,
+    DetalleproductoComponent
   ],
   imports: [
     BrowserModule,

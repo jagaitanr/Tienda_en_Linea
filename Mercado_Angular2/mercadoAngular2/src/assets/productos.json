@@ -1,0 +1,128 @@
+[  {
+    "imagen" : "../../../assets/imagenesBase/ajo.jpg",
+    "nombre" : "ajo",
+    "precio" : 3000,
+    "unidadesDisponibles" : 120
+  },
+  {
+    "imagen" : "../../assets/imagenesBase/aguacate.jpg",
+    "nombre" : "aguacate",
+    "precio" : 2500,
+    "unidadesDisponibles" : 100
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/almendras.jpg",
+    "nombre" : "almendras",
+    "precio" : 6000,
+    "unidadesDisponibles" : 100
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/arandanos.jpg",
+    "nombre" : "arandanos",
+    "precio" : 2500,
+    "unidadesDisponibles" : 80
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/brocoli.png",
+    "nombre" : "brocoli",
+    "precio" : 3200,
+    "unidadesDisponibles" : 150
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/calabaza.jpg",
+    "nombre" : "calabaza",
+    "precio" : 900,
+    "unidadesDisponibles" : 220
+  },
+  {
+    "imagen" : "../../assets/imagenesBase/canela.jpg",
+    "nombre" : "canela",
+    "precio" : 2000,
+    "unidadesDisponibles" : 130
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/cebolla.jpg",
+    "nombre" : "cebolla",
+    "precio" : 1800,
+    "unidadesDisponibles" : 300
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/fresa.jpg",
+    "nombre" : "fresa",
+    "precio" : 4500,
+    "unidadesDisponibles" : 110
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/kiwi.jpg",
+    "nombre" : "kiwi",
+    "precio" : 7000,
+    "unidadesDisponibles" : 60
+  },
+  {
+    "imagen" : "../../assets/imagenesBase/limon.jpg",
+    "nombre" : "limon",
+    "precio" : 120,
+    "unidadesDisponibles" : 1000
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/lychee.jpg",
+    "nombre" : "lychee",
+    "precio" : 3000,
+    "unidadesDisponibles" : 100
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/maiz.jpg",
+    "nombre" : "maiz",
+    "precio" : 1000,
+    "unidadesDisponibles" : 180
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/manzana.jpg",
+    "nombre" : "manzana",
+    "precio" : 1600,
+    "unidadesDisponibles" : 220
+  },
+  {
+    "imagen" : "../../assets/imagenesBase/naranja.jpg",
+    "nombre" : "naranja",
+    "precio" : 250,
+    "unidadesDisponibles" : 1200
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/papa.jpg",
+    "nombre" : "papa",
+    "precio" : 120,
+    "unidadesDisponibles" : 1000
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/pasta.jpg",
+    "nombre" : "pasta",
+    "precio" : 1600,
+    "unidadesDisponibles" : 90
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/pimienta.jpg",
+    "nombre" : "pimienta",
+    "precio" : 2200,
+    "unidadesDisponibles" : 150
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/repollo.jpg",
+    "nombre" : "repollo",
+    "precio" : 950,
+    "unidadesDisponibles" : 80
+  },
+  {
+    "imagen" : "../../assets/imagenesBase/tomate.jpg",
+    "nombre" : "tomate",
+    "precio" : 200,
+    "unidadesDisponibles" : 900
+  },
+  {
+    "imagen" : "../../../assets/imagenesBase/zanahoria.jpg",
+    "nombre" : "zanahoria",
+    "precio" : 300,
+    "unidadesDisponibles" : 3000
+  }
+ ]
+  

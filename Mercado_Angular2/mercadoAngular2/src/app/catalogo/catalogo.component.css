@@ -5,3 +5,19 @@
     margin-left: 3em;
     margin-right: 3em;
 }
+
+.card{
+    width: 24%;
+    min-height: 100px;
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0, 2, 4, 1 rgba(0,0,0,0.3);
+    margin: 3px;
+    display: inline-block;
+}
+
+.card img{
+    width: 100%;
+
+}

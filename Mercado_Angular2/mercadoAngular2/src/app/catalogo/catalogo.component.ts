@@ -1,15 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import * as data from '../../assets/productos.json';
+import { UserService } from 'app/Services/user.service';
+import { DetalleproductoComponent } from 'app/detalleproducto/detalleproducto.component';
+
+
+
 
 @Component({
   selector: 'app-catalogo',
+  //template: '<app-detalleproducto [childMessage]="MensajePadre"></app-detalleproducto>',
   templateUrl: './catalogo.component.html',
-  styleUrls: ['./catalogo.component.css']
+  /*template: `
+    <app-child [childMessage]="parentMessage"></app-child>
+  `,
+  */styleUrls: ['./catalogo.component.css']
+  // providers:[UserService]
 })
-export class CatalogoComponent implements OnInit {
 
-  constructor() { }
 
+//export class CatalogoComponent implements OnInit {
+export class CatalogoComponent{
+  //constructor(private UserService:UserService) { }
+  constructor(){}
   ngOnInit() {
+    
+
   }
+
+  leerNombre(nombre){/*
+    console.log("el producto es: " + nombre);
+    this.UserService.mostrarProducto(nombre);
+  */
+ 
+  }
+
+
+  MensajePadre = "ajo";
+
+  listadeProductos : any = data;
+  
 
 }
