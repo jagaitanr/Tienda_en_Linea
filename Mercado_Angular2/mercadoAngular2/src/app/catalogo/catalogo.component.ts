@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as data from '../../assets/productos.json';
 import { UserService } from 'app/Services/user.service';
 import { DetalleproductoComponent } from 'app/detalleproducto/detalleproducto.component';
-
+import { VariablesGlobales } from 'app/common/Variables-globales';
 
 
 
@@ -27,10 +27,10 @@ export class CatalogoComponent{
 
   }
 
-  leerNombre(nombre){/*
+  leerNombre(nombre){
     console.log("el producto es: " + nombre);
-    this.UserService.mostrarProducto(nombre);
-  */
+    VariablesGlobales.detalle_producto=nombre;
+  
  
   }
 

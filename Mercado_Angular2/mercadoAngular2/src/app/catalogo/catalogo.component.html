@@ -28,7 +28,6 @@
     <p>Precio:{{item.precio}}</p>
     <h6>Unid. En Existencia: {{item.unidadesDisponibles}}</h6>
       <button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>
-      <app-detalleproducto [nombre]= "item.nombre"></app-detalleproducto>
       <button id= "btncompra" class="btn-small amber ligthen-4 rigth">añadir</button>
       <input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="cantidad">
     </div>

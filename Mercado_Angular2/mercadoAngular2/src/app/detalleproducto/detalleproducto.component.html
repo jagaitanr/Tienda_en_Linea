@@ -1,7 +1,18 @@
-<div class= "card" ngform="let item from listadeProductos">
-
-  <h1>pagina de detalle de productos</h1>
-  <p>
-    Nombre: {{nombre}}
-  </p>
+<div class= "card" *ngFor="let item of listadeProductos" >
+  <div *ngIf="name===item.nombre">
+      <h1>pagina de detalle de productos</h1>
+      <div class = "row">
+      <h5> el productos es {{name}}: {{item.nombre}}</h5>
+      </div>
+      <div class = "row">
+          <div class = "col l6 s6 m6">
+          <img src={{item.imagen}} alt = "">
+          </div>
+      <div class = "col l6 s6 m6">
+          <h5>Precio:{{item.precio}}</h5>
+          <h5>Unidades Disponibles : {{item.unidadesDisponibles}}</h5>    
+      </div>
+  </div>
+  
 </div>
+ 
