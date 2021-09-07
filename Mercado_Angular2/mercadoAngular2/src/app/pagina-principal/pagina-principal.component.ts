@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { VariablesGlobales } from 'app/common/Variables-globales';
+import { routing } from 'app/app.routing';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaPrincipalComponent implements OnInit {
 
-  constructor() { }
+  paginaElegida:string; //declaro esta variable local para usarla en el html de este componente
+  constructor() {
+  //  this.paginaElegida = VariablesGlobales.pagina_actual;
+   }
 
   ngOnInit() {
+    this.paginaElegida = VariablesGlobales.pagina_actual;
+  
   }
 
 }

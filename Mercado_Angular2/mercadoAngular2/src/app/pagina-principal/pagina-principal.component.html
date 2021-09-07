@@ -3,7 +3,15 @@
      <app-barra-superior>pagina principal</app-barra-superior>
   </div>
   <div class = "row">
-     <app-catalogo></app-catalogo>
+
+   <div *ngIf="paginaElegida==='catalogo'">
+     <app-catalogo>app catalogo</app-catalogo>
      <router-outlet></router-outlet>
-  </div>
+   </div>
+   <div  *ngIf="paginaElegida==='PagDetalleProducto'">
+      <app-detalleproducto>app detalle</app-detalleproducto>
+      <router-outlet></router-outlet>
+   </div>
+ </div>
+  
 </div>
