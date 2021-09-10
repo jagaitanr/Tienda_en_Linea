@@ -43,5 +43,10 @@
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
     "typescript": "3.5.1"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }
