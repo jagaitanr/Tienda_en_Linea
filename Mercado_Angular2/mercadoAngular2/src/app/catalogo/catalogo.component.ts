@@ -6,6 +6,8 @@ import { VariablesGlobales } from 'app/common/Variables-globales';
 import { summaryFileName } from '@angular/compiler/src/aot/summary_serializer';
 //import { fstat } from 'fs';
 import { readFile } from 'fs';
+import { DataService } from 'app/data.service';
+import { HttpService } from 'app/http.service';
 
 
 
@@ -19,9 +21,14 @@ import { readFile } from 'fs';
 
 
 export class CatalogoComponent{
-  constructor(){}
-  ngOnInit() {
+    vegetales: String [] = [];
+    constructor(private dataService: DataService, httpService: HttpService){}
+  
+  mostrarBaseDatos () {
+      this.vegetales = this.dataService.getVegetales();
   }
+  listadeProductos = this.dataService.getVegetales();
+  
 
  // arreglo:(string|number)[] = new Array(100)
 
@@ -101,7 +108,7 @@ function changeJson(id,params){
 
   MensajePadre = "ajo";
 
-  listadeProductos : any = data;
-  
+  listadeProductos2 : any = data;
+ 
 
 }

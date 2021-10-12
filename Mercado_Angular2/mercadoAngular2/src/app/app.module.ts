@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpService } from './http.service';
 
 import { AppComponent } from './app.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
@@ -11,7 +12,7 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { FiltrobuscarPipe } from './filtrobuscar.pipe';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
-
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,8 @@ import { DetalleproductoComponent } from './detalleproducto/detalleproducto.comp
     HttpModule,
     routing,
     ReactiveFormsModule
-
   ],
-  providers: [],
+  providers: [HttpService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
