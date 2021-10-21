@@ -8,8 +8,8 @@ import { summaryFileName } from '@angular/compiler/src/aot/summary_serializer';
 import { readFile } from 'fs';
 import { DataService } from 'app/data.service';
 import { HttpService } from 'app/http.service';
-
-
+import { Response } from '@angular/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -22,16 +22,18 @@ import { HttpService } from 'app/http.service';
 
 export class CatalogoComponent{
     vegetales: String [] = [];
+    Variable1:DataService;
     constructor(private dataService: DataService, httpService: HttpService){}
   
   mostrarBaseDatos () {
       this.vegetales = this.dataService.getVegetales();
   }
   listadeProductos = this.dataService.getVegetales();
-  
-
- // arreglo:(string|number)[] = new Array(100)
-
+  /*
+  agregarProducto(nombre){
+    //  this.dataService.agregarProductoData(nombre , 3500, 'imagen', 100);
+  }
+  */
   leerNombre(nombre){
     console.log("el producto es: " + nombre);
     VariablesGlobales.detalle_producto=nombre;
