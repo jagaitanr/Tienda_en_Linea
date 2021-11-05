@@ -37,6 +37,13 @@ export class DataService {
     return this.vegetales;
     
   }
+  postVegetales(nombreProducto){this.httpService.sendDatos({nombreProducto})
+  .subscribe((data: Response)=> console.log(data))
+  }
+  
+  agregarProductoA(posicionA, unidadesA){this.httpService.agregarProducto(posicionA, unidadesA)}
+
+  
   
   getUnProducto(nombre: string){
     const urlProdOne = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/${nombre}/.json';

@@ -20,4 +20,8 @@ getDatos(){
     .map((response: Response) => response.json())
   }
 
+  agregarProducto(posicion, unidades){
+    console.log('se va a actualizar '+ posicion + ' ,' + unidades);
+  return this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10', JSON.stringify({ unidadesDisponibles: unidades })).map((response: Response) => response.json())
+  }
 }

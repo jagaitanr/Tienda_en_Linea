@@ -10,6 +10,8 @@ import { DataService } from 'app/data.service';
 import { HttpService } from 'app/http.service';
 import { Response } from '@angular/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { getDatabase, ref, child, get,  } from '@firebase/database';
+
 
 
 
@@ -22,7 +24,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export class CatalogoComponent{
     vegetales: String [] = [];
+    vegetales2:any;
     Variable1:DataService;
+
     constructor(private dataService: DataService, httpService: HttpService){}
   
   mostrarBaseDatos () {
@@ -82,7 +86,7 @@ function changeJson(id,params){
 }
         }
  
- 
+ /*
   AgregandoProductos(NumerodeProductos, nombreProducto, unidades_disponibles){
     var yaEstaProducto = false;   
     for (let i=0; i<=VariablesGlobales.productosCanasta; i++){  //recorre el arreglo para revisar si ya esta en la canasta el producto si es así simplemente suma la cantidad a añadir
@@ -105,7 +109,18 @@ function changeJson(id,params){
         console.log (VariablesGlobales.productosCanasta);
     
     
-  }  
+  }  */
+  agregarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
+  {
+      console.log ('el producto a modificar es: '+ nombreProducto);
+      console.log ('la cantidad de artículos a agregar es: '+ numerodeProductos);
+      console.log ('las unidades disponibles actuales son: '+ unidadesDisponibles);
+      /*const db = getDatabase();
+      const newKey = push(child(ref(db),nombreProducto)).key;*/
+      //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
+   
+     this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
+  }
 
 
   MensajePadre = "ajo";
