@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService {
-
+  
   constructor(private http : Http) { }
 
 getDatos(){
@@ -22,6 +22,19 @@ getDatos(){
 
   agregarProducto(posicion, unidades){
     console.log('se va a actualizar '+ posicion + ' ,' + unidades);
-  return this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10', JSON.stringify({ unidadesDisponibles: unidades })).map((response: Response) => response.json())
-  }
+  
+   // return this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10', JSON.stringify({ unidadesDisponibles: unidades })).map((response: Response) => response.json())
+   /*try{
+   this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10.json', JSON.stringify({ unidadesDisponibles: unidades }))}
+   catch(e) {console.log(e);}
+    */
+try {
+   return this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10.json', JSON.stringify({ unidadesDisponibles: unidades, nombre: 'limon', precio: '5000' })).subscribe((res:Response) => {
+    console.log(res);
+    return res;
+    })
+}
+catch (e){console.log ("el error es> "+ e)}
+  }  
+
 }
