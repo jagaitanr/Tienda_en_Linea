@@ -7,7 +7,7 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
 import { NgModule } from '@angular/core';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
-
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 const appRoutes = [
@@ -16,7 +16,8 @@ const appRoutes = [
      {path:'barra-superior', component: BarraSuperiorComponent,  pathMatch: 'full'},
      {path:'catalogo', component: CatalogoComponent,  pathMatch: 'full'},
      {path : 'detalle-producto', component: DetalleproductoComponent, pathMatch: 'full'},
-    {path: '**', redirectTo: 'inicio-sesion'}
+     {path : 'carrito', component: CarritoComponent, pathMatch: 'full'},     
+     {path: '**', redirectTo: 'inicio-sesion'}
     ];
 
 export const routing = RouterModule.forRoot (appRoutes);

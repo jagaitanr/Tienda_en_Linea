@@ -31,6 +31,7 @@ export class CatalogoComponent{
   
   mostrarBaseDatos () {
       this.vegetales = this.dataService.getVegetales();
+      console.log("la base de datos es: " + this.vegetales);
   }
   listadeProductos = this.dataService.getVegetales();
   /*
@@ -110,7 +111,43 @@ function changeJson(id,params){
     
     
   }  */
-  agregarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
+  agregarProducto(imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, posicionProducto, unidadesApartadas)
+  {
+      console.log ('la imagen a agregar es: '+ imagenProducto);
+      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
+      console.log ('el nombre del producto a agregar es : ' + nombreProducto);
+      console.log ('el precio del producto a agregar es: ' + precioProducto);
+      console.log ('las unidades disponibles del producto a agregar es: ' + unidadesDisponibles);
+      console.log ('la posici[on en el catalogo es]: ' + posicionProducto);
+      console.log ('las unidades apartadas para este producto es: ' + unidadesApartadas);
+      console.log(VariablesGlobales.productosAnadidosImagen[2]);
+      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
+      if (VariablesGlobales.productoenCanasta[posicionProducto]===true){ //si es verdadero se sumara al actual unidades apartadas
+        VariablesGlobales.productosAnadidosApartados[posicionProducto]=VariablesGlobales.productosAnadidosApartados[posicionProducto]+ parseInt(unidadesApartadas);
+        
+    }
+
+      else {  //de lo contrario se iniciaran las variables en la posicion correspondiente
+        VariablesGlobales.productosAnadidosImagen[posicionProducto]=imagenProducto;
+        VariablesGlobales.productosAnadidosNombre[posicionProducto]=nombreProducto;
+        VariablesGlobales.productosAnadidosPrecio[posicionProducto]=parseInt(precioProducto);
+        VariablesGlobales.productosAnadidosUdisponibles[posicionProducto]=parseInt(unidadesDisponibles);
+        VariablesGlobales.productosAnadidosPosicion[posicionProducto]=parseInt(posicionProducto);
+        VariablesGlobales.productosAnadidosApartados[posicionProducto]=parseInt(unidadesApartadas);
+        VariablesGlobales.productoenCanasta[posicionProducto]=true;
+      }
+
+      console.log (VariablesGlobales.productosAnadidosNombre);
+      console.log (VariablesGlobales.productosAnadidosApartados);
+      
+      /*const db = getDatabase();
+      const newKey = push(child(ref(db),nombreProducto)).key;*/
+      //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
+   
+     //this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
+  }
+
+  ComprarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
   {
       console.log ('el producto a modificar es: '+ nombreProducto);
       console.log ('la cantidad de artículos a agregar es: '+ numerodeProductos);
@@ -121,7 +158,6 @@ function changeJson(id,params){
    
      this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
   }
-
 
   MensajePadre = "ajo";
 
