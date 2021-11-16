@@ -40,8 +40,9 @@ export class DataService {
   postVegetales(nombreProducto){this.httpService.sendDatos({nombreProducto})
   .subscribe((data: Response)=> console.log(data))
   }
-  
-  agregarProductoA(posicionA, unidadesA){this.httpService.agregarProducto(posicionA, unidadesA)}
+
+  agregarProducto(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas)
+  {this.httpService.agregarProductoA(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas)}
 
   
   

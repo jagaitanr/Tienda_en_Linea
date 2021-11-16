@@ -86,8 +86,8 @@ function changeJson(id,params){
 }
         }
  
- /*
-  AgregandoProductos(NumerodeProductos, nombreProducto, unidades_disponibles){
+ 
+  agregandoProductos(NumerodeProductos, nombreProducto, unidades_disponibles){
     var yaEstaProducto = false;   
     for (let i=0; i<=VariablesGlobales.productosCanasta; i++){  //recorre el arreglo para revisar si ya esta en la canasta el producto si es así simplemente suma la cantidad a añadir
         if (VariablesGlobales.productosAñadidosNombre[i]===nombreProducto){
@@ -109,17 +109,20 @@ function changeJson(id,params){
         console.log (VariablesGlobales.productosCanasta);
     
     
-  }  */
-  agregarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
+  }  
+  ComprarProducto(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas)
   {
-      console.log ('el producto a modificar es: '+ nombreProducto);
-      console.log ('la cantidad de artículos a agregar es: '+ numerodeProductos);
-      console.log ('las unidades disponibles actuales son: '+ unidadesDisponibles);
+    console.log ('el indice es '+ indice);
+    console.log ('la imagen del producto es: '+ imagenProducto);
+    console.log ('el producto a modificar es: '+ nombreProducto);
+    console.log ('el precio de este producto es: '+ precioProducto);
+      console.log ('las unidades disponibles son:  '+ unidadesDisponibles);
+      console.log ('las unidades separadas son : '+ unidadesSeparadas);
       /*const db = getDatabase();
       const newKey = push(child(ref(db),nombreProducto)).key;*/
       //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
    
-     this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
+     this.dataService.agregarProducto(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas); //actualizar productos
   }
 
 
