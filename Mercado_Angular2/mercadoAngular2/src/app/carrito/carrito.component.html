@@ -9,18 +9,18 @@
     </div>
     <div class = "row">
       <h1>productos</h1>
-      <div class = "card" *ngFor="let item of arreglo2; let posicion = index">
-        <img src={{item.imagen}} alt="">
-        <h6>Producto: {{item.nombre}}</h6>
-        <p>Precio:{{item.precio}}</p>
-        <h6>Unid. En Existencia: {{item.unidadesDisponibles}}</h6>
-        <button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>
+      <div class = "card" *ngFor="let item2 of arreglo; let posicion = index">
+        <img src={{item2.imagen}} alt="" class = "imagenVista" >
+        <h6>Producto: {{item2.nombre}}</h6>
+        <p>Precio:{{item2.precio}}</p>
+        <h6>Unid. En Existencia: {{item2.unidadesDisponibles}}</h6>
+        <!--<button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>-->
         <!-- <button id="verbaseDatos" class="btn-small indigo ligthen-4" (click)="mostrarBaseDatos()">mostrar base de datos en consola</button> -->
         <!-- <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="AgregandoProductos(h.value, item.nombre, item.unidadesDisponibles)">añadir</button>-->
-       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, posicion,  h.value)">añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
-    </div>
+       <!--<button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, posicion,  h.value)">añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">-->
+      </div>
     <div class = "row">
-      <button id=botonAtras routerLink ='/pagina-principal' (click)="retornarPagina()">atrás</button>
+      <!--<button id=botonAtras routerLink ='/pagina-principal' (click)="retornarPagina()">atrás</button>-->
     </div>
    
   </div>

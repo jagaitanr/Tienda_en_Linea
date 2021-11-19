@@ -11,6 +11,7 @@ import { HttpService } from 'app/http.service';
 import { Response } from '@angular/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { getDatabase, ref, child, get,  } from '@firebase/database';
+import { stringify } from 'querystring';
 
 
 
@@ -122,7 +123,7 @@ function changeJson(id,params){
       console.log ('las unidades apartadas para este producto es: ' + unidadesApartadas);
       console.log(VariablesGlobales.productosAnadidosImagen[2]);
       console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
-      if (VariablesGlobales.productoenCanasta[posicionProducto]===true){ //si es verdadero se sumara al actual unidades apartadas
+      if (VariablesGlobales.productoenCanasta[posicionProducto]==='true'){ //si es verdadero se sumara al actual unidades apartadas
         VariablesGlobales.productosAnadidosApartados[posicionProducto]=VariablesGlobales.productosAnadidosApartados[posicionProducto]+ parseInt(unidadesApartadas);
         
     }
@@ -134,9 +135,13 @@ function changeJson(id,params){
         VariablesGlobales.productosAnadidosUdisponibles[posicionProducto]=parseInt(unidadesDisponibles);
         VariablesGlobales.productosAnadidosPosicion[posicionProducto]=parseInt(posicionProducto);
         VariablesGlobales.productosAnadidosApartados[posicionProducto]=parseInt(unidadesApartadas);
-        VariablesGlobales.productoenCanasta[posicionProducto]=true;
+        VariablesGlobales.productoenCanasta[posicionProducto]='true';
       }
-
+      for (let i=0; i<=20; i++){
+         let a = 'productoenCanasta'+String(i);
+        //console.log(a);
+        localStorage.setItem( a ,VariablesGlobales.productoenCanasta[i])//se guarda en una variable local producto en canasta para abrirlo en la pagina de carrito
+      }
       console.log (VariablesGlobales.productosAnadidosNombre);
       console.log (VariablesGlobales.productosAnadidosApartados);
       
@@ -162,6 +167,7 @@ function changeJson(id,params){
   MensajePadre = "ajo";
 
   listadeProductos2 : any = data;
- 
+  //console.log('los productos en canasta son:' +VariablesGlobales.productoenCanasta); 
+    
 
 }

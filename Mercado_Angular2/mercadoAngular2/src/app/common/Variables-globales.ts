@@ -8,5 +8,5 @@ export class VariablesGlobales{
   public static productosAnadidosPosicion: number[]=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; // se guardará un array con los nombres de los productos añadidos la posicion  de 0-20 en el catalogo
   public static productosAnadidosApartados: number[]=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; // se guardará un array con los nombres de los productos añadidos apartados
   public static productosCanasta: number = 0; // productos de diferente nombre en canasta  
-  public static productoenCanasta: boolean[]=[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]; //para determinar que este producto ya fue agregado a la canasta
+  public static productoenCanasta: string[]=['false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'false']; //para determinar que este producto ya fue agregado a la canasta
 }

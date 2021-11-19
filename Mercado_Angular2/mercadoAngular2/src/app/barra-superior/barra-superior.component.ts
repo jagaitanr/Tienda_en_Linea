@@ -17,6 +17,7 @@ export class BarraSuperiorComponent implements OnInit {
     VariablesGlobales.pagina_actual='catalogo';
     console.log('la pagina actual es> '+VariablesGlobales.pagina_actual);
     this.router.navigate(['/catalogo'])
+    
   }
   carrito(){
     VariablesGlobales.pagina_actual='carrito';
