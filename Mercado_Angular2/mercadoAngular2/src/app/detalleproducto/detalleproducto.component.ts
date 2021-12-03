@@ -22,7 +22,8 @@ constructor (){
 }
 listadeProductos : any = data;
 retornarPagina(){
-  VariablesGlobales.pagina_actual='catalogo';
+  //VariablesGlobales.pagina_actual='catalogo';
+  localStorage.setItem("VariablesGlobales.pagina_actual","catalogo");
   console.log("estoy en retornar pagina: "+ VariablesGlobales.pagina_actual);
   }
 

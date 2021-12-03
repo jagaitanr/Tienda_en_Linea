@@ -28,17 +28,23 @@ export class CarritoComponent implements OnInit   {
     for (let i=0 ; i<=20 ; i++){
       let a = 'productoenCanasta'+String(i);
       VariablesGlobales.productoenCanasta[i] = localStorage.getItem(a); //recupero los datos
-    console.log(a);  
+    console.log(a);      
   }
     console.log('los productos en canasta son:' +VariablesGlobales.productoenCanasta); 
     let j=0;
     for (let i=0; i<=20; i++){
 
-      if (VariablesGlobales.productoenCanasta[i]==='true'){
-      this.arreglo[j]={imagen:VariablesGlobales.productosAnadidosImagen[i],
-      nombre:VariablesGlobales.productosAnadidosNombre[i],
-      precio:VariablesGlobales.productosAnadidosPrecio[i],
-      unidadesDisponibles:VariablesGlobales.productosAnadidosApartados[i]}
+      //if (VariablesGlobales.productoenCanasta[i]==='true'){
+      if (localStorage.getItem("productoenCanasta"[i])=="true"){
+      this.arreglo[j]={imagen:localStorage.getItem("productosAgregadosNombre"[j]),
+        //this.arreglo[j]={imagen:VariablesGlobales.productosAnadidosImagen[i],
+      nombre:localStorage.getItem("productosAgregadosNombre"[j]),
+        //nombre:VariablesGlobales.productosAnadidosNombre[i],
+      precop:localStorage.getItem("productosAgregadosPrecio"[j]),
+        //precio:VariablesGlobales.productosAnadidosPrecio[i],
+      unidadesDisponibles:localStorage.getItem("productosAgregadosUdisponibles"[j])}
+      
+        //unidadesDisponibles:VariablesGlobales.productosAnadidosApartados[i]}
             //this.arreglo2[j]='{imagen:"'+VariablesGlobales.productosAnadidosImagen[i]+'" }'
       j=j+1;
           }
@@ -48,7 +54,9 @@ export class CarritoComponent implements OnInit   {
     }
     
   retornarPagina(){
-    VariablesGlobales.pagina_actual='catalogo';
+    //VariablesGlobales.pagina_actual='catalogo';
+    localStorage.setItem("VariablesGlobales.pagina_actual","catalogo")
+   
     console.log("estoy en retornar pagina: "+ VariablesGlobales.pagina_actual);
     }
 }

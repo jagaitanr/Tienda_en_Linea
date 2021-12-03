@@ -23,29 +23,32 @@ import { stringify } from 'querystring';
   })
 
 
-export class CatalogoComponent{
+export class CatalogoComponent implements OnInit{
     vegetales: String [] = [];
     vegetales2:any;
     Variable1:DataService;
+    paginaCatalogo:string;
 
-    constructor(private dataService: DataService, httpService: HttpService){}
+  constructor(private dataService: DataService, httpService: HttpService){}
   
+  ngOnInit(){
+    localStorage.setItem(  "activo" , this.paginaCatalogo)
+    
+  }
   mostrarBaseDatos () {
       this.vegetales = this.dataService.getVegetales();
       console.log("la base de datos es: " + this.vegetales);
   }
+
   listadeProductos = this.dataService.getVegetales();
-  /*
-  agregarProducto(nombre){
-    //  this.dataService.agregarProductoData(nombre , 3500, 'imagen', 100);
-  }
-  */
+
   leerNombre(nombre){
     console.log("el producto es: " + nombre);
     VariablesGlobales.detalle_producto=nombre;
-    VariablesGlobales.pagina_actual = "PagDetalleProducto";
-  
+    //VariablesGlobales.pagina_actual = "PagDetalleProducto";
+    localStorage.setItem("VariablesGlobales.pagina_actual", "PagDetalleProducto")
    }
+   /*
   ActualizarJson(cantidad, nombre){
     //var jsonfile = require ('jsonfile');
     var jsonfile = require ('fs');
@@ -56,6 +59,7 @@ export class CatalogoComponent{
     }
     changeJson(3,params)//Ejecutalo;
 
+    /*
 function changeJson(id,params){
     jsonfile.readFile(file,function(err,data){
         if(err){
@@ -88,68 +92,80 @@ function changeJson(id,params){
 }
         }
  
- /*
-  AgregandoProductos(NumerodeProductos, nombreProducto, unidades_disponibles){
-    var yaEstaProducto = false;   
-    for (let i=0; i<=VariablesGlobales.productosCanasta; i++){  //recorre el arreglo para revisar si ya esta en la canasta el producto si es así simplemente suma la cantidad a añadir
-        if (VariablesGlobales.productosAñadidosNombre[i]===nombreProducto){
-            
-          VariablesGlobales.productosAñadidosCantidad[i] = Number(VariablesGlobales.productosAñadidosCantidad[i]) + Number(NumerodeProductos);
-          this.ActualizarJson(VariablesGlobales.productosAñadidosCantidad[i], nombreProducto);
-          console.log("dentro del if "+ i);
-           i=VariablesGlobales.productosCanasta+1;//para sacarlo de for ya que encontró el mismo producto y no es necesario revisar más
-           yaEstaProducto=true; // si encuentra un producto igual
-          }
-      }
-      if (!yaEstaProducto){
-        VariablesGlobales.productosAñadidosNombre[VariablesGlobales.productosCanasta]= nombreProducto;
-        VariablesGlobales.productosAñadidosCantidad[VariablesGlobales.productosCanasta]= Number(NumerodeProductos);
-        VariablesGlobales.productosCanasta=Number(VariablesGlobales.productosCanasta)+1;
-  }
-        console.log (VariablesGlobales.productosAñadidosNombre); 
-        console.log (VariablesGlobales.productosAñadidosCantidad); 
-        console.log (VariablesGlobales.productosCanasta);
-    
-    
-  }  */
+ */       
+ 
   agregarProducto(imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, posicionProducto, unidadesApartadas)
   {
+ try{
+    //let  productosAgregadosNombre: string []=[];
+      let posicionInt = parseInt(posicionProducto);
+      let nombre:string='ProductosApartadosNombre'+ String(posicionInt);//se prepara para crear una variable localhost
+      let precio:string='ProductosApartadosPrecio'+ String(posicionInt);
+      let unidadesDispo:string='ProductosApartadosUniDisponibles'+ String(posicionInt);
+      let unidadesApart:string='ProductosApartadosUniApartadas'+ String(posicionInt);
+      let imagen:string='ProductosApartadosImagen'+ String(posicionInt);
+      let enCanasta:string = 'ProductosApartadosenCanasta'+ String(posicionInt);
+      console.log ("el item es: "+posicionInt + posicionProducto);
       console.log ('la imagen a agregar es: '+ imagenProducto);
-      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
+      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionInt]);
       console.log ('el nombre del producto a agregar es : ' + nombreProducto);
       console.log ('el precio del producto a agregar es: ' + precioProducto);
       console.log ('las unidades disponibles del producto a agregar es: ' + unidadesDisponibles);
-      console.log ('la posici[on en el catalogo es]: ' + posicionProducto);
+      console.log ('la posici[on en el catalogo es]: ' + posicionInt);
       console.log ('las unidades apartadas para este producto es: ' + unidadesApartadas);
-      console.log(VariablesGlobales.productosAnadidosImagen[2]);
-      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
-      if (VariablesGlobales.productoenCanasta[posicionProducto]==='true'){ //si es verdadero se sumara al actual unidades apartadas
-        VariablesGlobales.productosAnadidosApartados[posicionProducto]=VariablesGlobales.productosAnadidosApartados[posicionProducto]+ parseInt(unidadesApartadas);
-        
+      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionInt]);
+      
+      localStorage.setItem(nombre,nombreProducto);
+      localStorage.setItem(precio,precioProducto);
+      localStorage.setItem(unidadesDispo,unidadesDisponibles);
+      localStorage.setItem(unidadesApart,unidadesApartadas);
+      localStorage.setItem(imagen,imagenProducto);
+      localStorage.setItem(enCanasta,'true');
+      
+      
+      
+      if (localStorage.getItem('enCanasta')==='true'){ //si es verdadero se sumara al actual unidades apartadas
+        var a = parseInt(localStorage.getItem('unidadesApart'))+parseInt(unidadesApartadas);
+        localStorage.setItem(unidadesApart,String(a)); //
+        console.log('dentro del if');
     }
+    
+      else { 
+        console.log("entro al else"); //de lo contrario se iniciaran las variables en la posicion correspondiente
+        //localStorage.setItem("productosAgregadosImagen"[posicionInt],imagenProducto);
+        //ProductosApartadosNombreArray[posicionInt]=nombreProducto;
+        //localStorage["ProductosApartadosNombreString"]=JSON.stringify(ProductosApartadosNombreArray);
+        //VariablesGlobales.productosAnadidosImagen[posicionInt]=imagenProducto;
+        localStorage.setItem("productosAgregadosNombre"[posicionInt],nombreProducto);
+        console.log("el nommbre del producto es: "+ localStorage.getItem("productosAgregadosNombre"));
+        //VariablesGlobales.productosAnadidosNombre[posicionInt]=nombreProducto;
+        localStorage.setItem("productosAgregadosPrecio"[posicionInt],precioProducto);
+        //VariablesGlobales.productosAnadidosPrecio[posicionInt]=parseInt(precioProducto);
+        localStorage.setItem("productosAgregadosUdisponibles"[posicionInt],unidadesDisponibles);
+        //VariablesGlobales.productosAnadidosUdisponibles[posicionInt]=parseInt(unidadesDisponibles);
+        localStorage.setItem("productosAgregadosPosicion"[posicionInt],posicionProducto);
+        //VariablesGlobales.productosAnadidosPosicion[posicionInt]=parseInt(posicionInt);
+        localStorage.setItem("productosAgregadosApartados"[posicionInt],unidadesApartadas);
+        //VariablesGlobales.productosAnadidosApartados[posicionInt]=parseInt(unidadesApartadas);
+        localStorage.setItem("productoenCanasta"[posicionInt],"true");
+        //VariablesGlobales.productoenCanasta[posicionInt]='true';
+      }
 
-      else {  //de lo contrario se iniciaran las variables en la posicion correspondiente
-        VariablesGlobales.productosAnadidosImagen[posicionProducto]=imagenProducto;
-        VariablesGlobales.productosAnadidosNombre[posicionProducto]=nombreProducto;
-        VariablesGlobales.productosAnadidosPrecio[posicionProducto]=parseInt(precioProducto);
-        VariablesGlobales.productosAnadidosUdisponibles[posicionProducto]=parseInt(unidadesDisponibles);
-        VariablesGlobales.productosAnadidosPosicion[posicionProducto]=parseInt(posicionProducto);
-        VariablesGlobales.productosAnadidosApartados[posicionProducto]=parseInt(unidadesApartadas);
-        VariablesGlobales.productoenCanasta[posicionProducto]='true';
-      }
+     
+      
       for (let i=0; i<=20; i++){
-         let a = 'productoenCanasta'+String(i);
-        //console.log(a);
-        localStorage.setItem( a ,VariablesGlobales.productoenCanasta[i])//se guarda en una variable local producto en canasta para abrirlo en la pagina de carrito
+        //console.log ("los productos apartados son: "+ ProductosApartadosNombreArray[i]);
       }
-      console.log (VariablesGlobales.productosAnadidosNombre);
-      console.log (VariablesGlobales.productosAnadidosApartados);
+      }//corchete del try
+      catch(e){console.log ("el error es: "+ e);}
+      //console.log (VariablesGlobales.productosAnadidosApartados);
       
       /*const db = getDatabase();
       const newKey = push(child(ref(db),nombreProducto)).key;*/
       //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
    
      //this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
+     
   }
 
   ComprarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)

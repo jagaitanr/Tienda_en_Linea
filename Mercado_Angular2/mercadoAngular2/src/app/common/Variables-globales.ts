@@ -1,6 +1,6 @@
 export class VariablesGlobales{
   public static  detalle_producto: string = "articulo"; // variable global utilizado para ver el detalle del productos
-  public static pagina_actual: string = "catalogo"; // variable para visualizar la página actual
+  public static pagina_actual: string; // variable para visualizar la página actual
   public static productosAnadidosImagen: String []=['','','','','','','','','','','','','','','','','','','',''];// array con las imagenes de cada producto
   public static productosAnadidosNombre: string[]=['','','','','','','','','','','','','','','','','','','','']; // se guardará un array con los nombres de los productos añadidos
   public static productosAnadidosPrecio: number[]=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; // se guardará un array con los precios de los productos añadidos
