@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validator, Validators } from  '@angular/forms';
 import { Router } from '@angular/router';
+import { VariablesGlobales } from 'app/common/Variables-globales';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -35,6 +36,8 @@ enviarFormulario(){
   if (email_ ==='jagaitanr@hotmail.com' &&  password_ === '1234'){
     
     this.router.navigate(['/pagina-principal']);
+    localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
+  
   }
 
 }

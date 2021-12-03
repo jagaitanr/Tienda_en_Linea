@@ -14,17 +14,18 @@ export class BarraSuperiorComponent implements OnInit {
   }
 
   catalogo(){
-    VariablesGlobales.pagina_actual='catalogo';
+    localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
     console.log('la pagina actual es> '+VariablesGlobales.pagina_actual);
     this.router.navigate(['/catalogo'])
+    
   }
   carrito(){
-    VariablesGlobales.pagina_actual='carrito';
-    console.log('la pagina actual es> '+VariablesGlobales.pagina_actual);
+    localStorage.setItem("VariablesGlobales.pagina_actual", "carrito");
+  console.log('la pagina actual es> '+VariablesGlobales.pagina_actual);
     this.router.navigate(['/carrito'])
   }
   inicio(){
-    VariablesGlobales.pagina_actual='inicio';
+    localStorage.setItem("VariablesGlobales.pagina_actual", "inicio");
     console.log('la pagina actual es> '+VariablesGlobales.pagina_actual);
     this.router.navigate(['/pagina-principal'])
   }
