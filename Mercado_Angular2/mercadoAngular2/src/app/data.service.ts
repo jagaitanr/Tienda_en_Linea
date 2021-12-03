@@ -41,8 +41,7 @@ export class DataService {
   .subscribe((data: Response)=> console.log(data))
   }
 
-  agregarProducto(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas)
-  {this.httpService.agregarProductoA(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas)}
+  agregarProductoA(posicionA, unidadesA){this.httpService.agregarProducto(posicionA, unidadesA)}
 
   
   

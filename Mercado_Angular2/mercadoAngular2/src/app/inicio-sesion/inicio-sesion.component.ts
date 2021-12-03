@@ -22,6 +22,10 @@ export class InicioSesionComponent implements OnInit {
       'correo' :new FormControl(null, Validators.required),
       'password' :new FormControl(null, Validators.required),
     })
+    this.resetearVariables();//de local storage limpiarlas
+
+
+
   }
 /*
 enviarFormulario(){
@@ -39,6 +43,26 @@ enviarFormulario(){
     localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
   
   }
+
+}
+
+resetearVariables(){
+  
+    for (let i=0; i<=19; i++){  
+      let nombre:string='ProductosApartadosNombre'+ String(i);//se prepara para crear una variable localhost
+      let precio:string='ProductosApartadosPrecio'+ String(i);
+      let unidadesDispo:string='ProductosApartadosUniDisponibles'+ String(i);
+      let unidadesApart:string='ProductosApartadosUniApartadas'+ String(i);
+      let imagen:string='ProductosApartadosImagen'+ String(i);
+      let enCanasta:string = 'ProductosApartadosenCanasta'+ String(i);
+    localStorage.setItem(nombre, '');
+    localStorage.setItem(precio, '');
+    localStorage.setItem(unidadesDispo, '');
+    localStorage.setItem(unidadesApart, '');
+    localStorage.setItem(imagen, '');
+    localStorage.setItem(enCanasta, 'false');
+    
+    }
 
 }
 
