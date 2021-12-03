@@ -2,8 +2,8 @@
   <div class="barra">
      <app-barra-superior>pagina principal</app-barra-superior>
   </div>
-  <div class = "row">
 
+  <div class = "row">
    <div *ngIf="paginaElegida==='catalogo'">
      <app-catalogo>app catalogo</app-catalogo>
      <router-outlet></router-outlet>
@@ -12,6 +12,10 @@
       <app-detalleproducto>app detalle</app-detalleproducto>
       <router-outlet></router-outlet>
    </div>
+   <div  *ngIf="paginaElegida==='carrito'">
+    <app-carrito>app carrito</app-carrito>
+    <router-outlet></router-outlet>
+ </div>
  </div>
   
 </div>

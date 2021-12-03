@@ -10,7 +10,6 @@ import { DetalleproductoComponent } from './detalleproducto/detalleproducto.comp
 import { CarritoComponent } from './carrito/carrito.component';
 
 
-
 const appRoutes = [
     {path:'pagina-principal', component: PaginaPrincipalComponent, pathMatch: 'full'},
      {path:'inicio-sesion', component: InicioSesionComponent,  pathMatch: 'full'},
@@ -18,7 +17,7 @@ const appRoutes = [
      {path:'catalogo', component: CatalogoComponent,  pathMatch: 'full'},
      {path : 'detalle-producto', component: DetalleproductoComponent, pathMatch: 'full'},
      {path : 'carrito', component: CarritoComponent, pathMatch: 'full'},
-    {path: '**', redirectTo: 'inicio-sesion'}
+     {path: '**', redirectTo: 'inicio-sesion'}
     ];
 
 export const routing = RouterModule.forRoot (appRoutes);

@@ -7,15 +7,15 @@
       <div class ="menu">
        <ul class="nav">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['catalogo']"><i class = "material-icons small">apps</i></a>
+          <a class="nav-link" routerLink='/pagina-principal'><i class = "material-icons small" (click)="catalogo()">apps</i></a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['carrito']"><i class = "material-icons small">shopping_cart</i></a>
+          <a class="nav-link" ><i class = "material-icons small" (click)="carrito()">shopping_cart</i></a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['inicio-sesion']"><i class = "material-icons small">exit_to_apps</i></a>
+          <a class="nav-link" routerLink='/pagina-principal'><i class = "material-icons small" (click)="inicio()">exit_to_apps</i></a>
         </li>
-        
+
         </ul>
       </div>
     </div>

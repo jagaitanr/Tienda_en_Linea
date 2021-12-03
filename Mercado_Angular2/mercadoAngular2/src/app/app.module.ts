@@ -13,6 +13,7 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
 import { FiltrobuscarPipe } from './filtrobuscar.pipe';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { DataService } from './data.service';
+import { CarritoComponent } from './carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DataService } from './data.service';
     BarraSuperiorComponent,
     CatalogoComponent,
     FiltrobuscarPipe,
-    DetalleproductoComponent
+    DetalleproductoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

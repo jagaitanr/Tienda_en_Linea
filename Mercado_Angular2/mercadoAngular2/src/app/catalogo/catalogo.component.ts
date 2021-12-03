@@ -28,9 +28,10 @@ export class CatalogoComponent{
     Variable1:DataService;
 
     constructor(private dataService: DataService, httpService: HttpService){}
-  
+
   mostrarBaseDatos () {
       this.vegetales = this.dataService.getVegetales();
+      console.log("la base de datos es: " + this.vegetales);
   }
   listadeProductos = this.dataService.getVegetales();
   /*
@@ -42,7 +43,7 @@ export class CatalogoComponent{
     console.log("el producto es: " + nombre);
     VariablesGlobales.detalle_producto=nombre;
     VariablesGlobales.pagina_actual = "PagDetalleProducto";
-  
+
    }
   ActualizarJson(cantidad, nombre){
     //var jsonfile = require ('jsonfile');
@@ -85,13 +86,13 @@ function changeJson(id,params){
     })
 }
         }
- 
- 
+
+
   agregandoProductos(NumerodeProductos, nombreProducto, unidades_disponibles){
-    var yaEstaProducto = false;   
+    var yaEstaProducto = false;
     for (let i=0; i<=VariablesGlobales.productosCanasta; i++){  //recorre el arreglo para revisar si ya esta en la canasta el producto si es así simplemente suma la cantidad a añadir
         if (VariablesGlobales.productosAñadidosNombre[i]===nombreProducto){
-            
+
           VariablesGlobales.productosAñadidosCantidad[i] = Number(VariablesGlobales.productosAñadidosCantidad[i]) + Number(NumerodeProductos);
           this.ActualizarJson(VariablesGlobales.productosAñadidosCantidad[i], nombreProducto);
           console.log("dentro del if "+ i);
@@ -104,13 +105,49 @@ function changeJson(id,params){
         VariablesGlobales.productosAñadidosCantidad[VariablesGlobales.productosCanasta]= Number(NumerodeProductos);
         VariablesGlobales.productosCanasta=Number(VariablesGlobales.productosCanasta)+1;
   }
-        console.log (VariablesGlobales.productosAñadidosNombre); 
-        console.log (VariablesGlobales.productosAñadidosCantidad); 
+        console.log (VariablesGlobales.productosAñadidosNombre);
+        console.log (VariablesGlobales.productosAñadidosCantidad);
         console.log (VariablesGlobales.productosCanasta);
-    
-    
-  }  
-  ComprarProducto(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas)
+
+
+  }  */
+  agregarProducto(imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, posicionProducto, unidadesApartadas)
+  {
+      console.log ('la imagen a agregar es: '+ imagenProducto);
+      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
+      console.log ('el nombre del producto a agregar es : ' + nombreProducto);
+      console.log ('el precio del producto a agregar es: ' + precioProducto);
+      console.log ('las unidades disponibles del producto a agregar es: ' + unidadesDisponibles);
+      console.log ('la posici[on en el catalogo es]: ' + posicionProducto);
+      console.log ('las unidades apartadas para este producto es: ' + unidadesApartadas);
+      console.log(VariablesGlobales.productosAnadidosImagen[2]);
+      console.log ('este articulo esta en canasta?: '+ VariablesGlobales.productoenCanasta[posicionProducto]);
+      if (VariablesGlobales.productoenCanasta[posicionProducto]===true){ //si es verdadero se sumara al actual unidades apartadas
+        VariablesGlobales.productosAnadidosApartados[posicionProducto]=VariablesGlobales.productosAnadidosApartados[posicionProducto]+ parseInt(unidadesApartadas);
+
+    }
+
+      else {  //de lo contrario se iniciaran las variables en la posicion correspondiente
+        VariablesGlobales.productosAnadidosImagen[posicionProducto]=imagenProducto;
+        VariablesGlobales.productosAnadidosNombre[posicionProducto]=nombreProducto;
+        VariablesGlobales.productosAnadidosPrecio[posicionProducto]=parseInt(precioProducto);
+        VariablesGlobales.productosAnadidosUdisponibles[posicionProducto]=parseInt(unidadesDisponibles);
+        VariablesGlobales.productosAnadidosPosicion[posicionProducto]=parseInt(posicionProducto);
+        VariablesGlobales.productosAnadidosApartados[posicionProducto]=parseInt(unidadesApartadas);
+        VariablesGlobales.productoenCanasta[posicionProducto]=true;
+      }
+
+      console.log (VariablesGlobales.productosAnadidosNombre);
+      console.log (VariablesGlobales.productosAnadidosApartados);
+
+      /*const db = getDatabase();
+      const newKey = push(child(ref(db),nombreProducto)).key;*/
+      //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
+
+     //this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
+  }
+
+  ComprarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
   {
     console.log ('el indice es '+ indice);
     console.log ('la imagen del producto es: '+ imagenProducto);
@@ -121,14 +158,13 @@ function changeJson(id,params){
       /*const db = getDatabase();
       const newKey = push(child(ref(db),nombreProducto)).key;*/
       //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
-   
+
      this.dataService.agregarProducto(indice, imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, unidadesSeparadas); //actualizar productos
   }
-
 
   MensajePadre = "ajo";
 
   listadeProductos2 : any = data;
- 
+
 
 }
