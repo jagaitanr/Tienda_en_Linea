@@ -135,7 +135,7 @@ function changeJson(id,params){
 
      
       console.log("los productos apartados son: ");
-      for (let i=0; i<=19; i++){
+      for (let i=0; i<=20; i++){
           let nombreTemporal : string = "ProductosApartadosNombre"+ String(i)
           console.log (localStorage.getItem(nombreTemporal));
             }

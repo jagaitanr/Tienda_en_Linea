@@ -15,6 +15,11 @@
         
         <p>Precio:{{item2.precio}}</p>
         <h6>Unid. En Existencia: {{item2.unidadesDisponibles}}</h6>
+        <h6>Unid. apartadas: {{item2.unidadesApartadas}}</h6>
+        <button id="quitar" class="btn-small yellow ligthen-4"  (click)="quitarProducto(item2.nombre)">quitar</button>
+     
+        
+        
         <!--<button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>-->
         <!-- <button id="verbaseDatos" class="btn-small indigo ligthen-4" (click)="mostrarBaseDatos()">mostrar base de datos en consola</button> -->
         <!-- <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="AgregandoProductos(h.value, item.nombre, item.unidadesDisponibles)">añadir</button>-->

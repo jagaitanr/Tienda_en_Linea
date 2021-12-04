@@ -25,6 +25,33 @@ export class CarritoComponent implements OnInit   {
  arreglo2: any[]=[];
  //lista:any []= [{imagen:VariablesGlobales.productosAnadidosImagen, nombre:'uno', precio:2000 },{ nombre:'dos',precio:1500}];
   ngOnInit() {
+    
+    this.escribirArreglo();
+
+    //  VariablesGlobales.productoenCanasta[i] = localStorage.getItem(a); //recupero los datos
+        }
+     
+
+quitarProducto(nombreQuitar){
+   let p = this.arreglo.length;
+   for (let i=0; i<=20; i++)
+   {
+     let b = 'ProductosApartadosNombre'+String(i);
+     let c = 'ProductosApartadosenCanasta'+String(i)
+     if (localStorage.getItem(b)===nombreQuitar)
+     {
+       localStorage.setItem(c,'false');
+       this.ngOnInit();
+     }
+   }
+   
+   
+}
+
+escribirArreglo()
+   {
+  
+    let j=0;
     for (let i=0 ; i<=20 ; i++){
     
     
@@ -38,13 +65,13 @@ export class CarritoComponent implements OnInit   {
     if (localStorage.getItem(a)==='true')
       {
       console.log(String(i)+localStorage.getItem(nombre));
-      this.arreglo[i]= {imagen:localStorage.getItem(imagen), nombre:localStorage.getItem(nombre), unidadesDisponibles:localStorage.getItem(unidadesDispo), unidadesApartadas:localStorage.getItem(unidadesApart) };
-      }
-
-    //  VariablesGlobales.productoenCanasta[i] = localStorage.getItem(a); //recupero los datos
-        }
-     }
-
+      this.arreglo[j]= {imagen:localStorage.getItem(imagen), nombre:localStorage.getItem(nombre), precio: localStorage.getItem(precio), unidadesDisponibles:localStorage.getItem(unidadesDispo), unidadesApartadas:localStorage.getItem(unidadesApart) };
+      j=j+1;  
+    }
+   }
+   let s = this.arreglo.length;
+   this.arreglo.splice(s+1,1); //eliminar el ultimo objeto del arreglo
+   }
   retornarPagina(){
     //VariablesGlobales.pagina_actual='catalogo';
     localStorage.setItem("VariablesGlobales.pagina_actual","catalogo")
