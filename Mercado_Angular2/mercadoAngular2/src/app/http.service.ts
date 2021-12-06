@@ -21,16 +21,17 @@ getDatos(){
     .map((response: Response) => response.json())
   }
 
-  agregarProducto(posicion, unidades){
-    console.log('se va a actualizar '+ posicion + ' ,' + unidades);
+  agregarProducto(posicion, a_imagen, b_nombre, c_precio, d_unidadesDisponibles){
+    //console.log('se va a actualizar '+ posicion + ' ,' + unidades);
 
    // return this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10', JSON.stringify({ unidadesDisponibles: unidades })).map((response: Response) => response.json())
    /*try{
    this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10.json', JSON.stringify({ unidadesDisponibles: unidades }))}
    catch(e) {console.log(e);}
     */
+   let database_firebase = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/'+String(posicion)+'.json';
 try {
-   return this.http.put('https://bigfood-4ef10-default-rtdb.firebaseio.com/10.json', JSON.stringify({ unidadesDisponibles: unidades, nombre: 'limon', precio: '5000' })).subscribe((res:Response) => {
+   return this.http.put(database_firebase, JSON.stringify({imagen:a_imagen, nombre: b_nombre, precio: c_precio, unidadesDisponibles: d_unidadesDisponibles  })).subscribe((res:Response) => {
     console.log(res);
     return res;
     })

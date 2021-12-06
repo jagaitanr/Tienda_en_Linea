@@ -19,13 +19,44 @@
     
 }
 
+.card{
+   /* width: 24%;
+    min-height: 100px;
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 3px;*/
+    width: 50%;
+    box-shadow: 0, 2, 4, 1 rgba(0,0,0,0.3);
+    display: inline-block;
+    
+}
 .imagenVista{
-    width: 10%;
-    height: 10%;
+    margin-left: 2em;
+    width: 20%;
+    height: 20%;
 
 }
 
 #quitar{
     margin-bottom: 2em;
     margin-top: 2em;
+}
+
+#posicionVista{
+    float: inline-end;
+    color: brown;
+}
+
+#comprar{
+    color: black;
+    width: 6em;
+    height: 3em;
+    
+}
+
+#cancelar{
+    color: black;
+    width: 6em;
+    height: 3em;
 }

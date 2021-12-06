@@ -117,6 +117,7 @@ function changeJson(id,params){
       localStorage.setItem(unidadesDispo,unidadesDisponibles);
       //localStorage.setItem(unidadesApart,unidadesApartadas);
       localStorage.setItem(imagen,imagenProducto);
+      localStorage.setItem('ProductosApartdosPosicion'+String(posicionInt),posicionProducto);
       
       
       
@@ -141,28 +142,21 @@ function changeJson(id,params){
             }
       }//corchete del try
       catch(e){console.log ("el error es: "+ e);}
-      //console.log (VariablesGlobales.productosAnadidosApartados);
-      
-      /*const db = getDatabase();
-      const newKey = push(child(ref(db),nombreProducto)).key;*/
-      //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
-   
-     //this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
      
   }
-
+/*
   ComprarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
   {
       console.log ('el producto a modificar es: '+ nombreProducto);
       console.log ('la cantidad de artículos a agregar es: '+ numerodeProductos);
       console.log ('las unidades disponibles actuales son: '+ unidadesDisponibles);
-      /*const db = getDatabase();
-      const newKey = push(child(ref(db),nombreProducto)).key;*/
+      const db = getDatabase();
+      const newKey = push(child(ref(db),nombreProducto)).key;
       //this.vegetales2 = this.dataService.postVegetales(nombreProducto); // para agregar productos nuevos
    
      this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
   }
-
+*/
   MensajePadre = "ajo";
 
   listadeProductos2 : any = data;
