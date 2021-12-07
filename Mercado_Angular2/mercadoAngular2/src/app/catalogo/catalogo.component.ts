@@ -13,6 +13,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { getDatabase, ref, child, get,  } from '@firebase/database';
 import { stringify } from 'querystring';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable'; // Observable para las notificaciones
+import { Subject } from 'rxjs/Subject'; // generar los eventos para el observables
 
 
 
@@ -32,6 +34,9 @@ export class CatalogoComponent implements OnInit{
 
   constructor(private dataService: DataService, httpService: HttpService, private router: Router){}
   
+  cantProdCanasta: String;
+  private notificacion$ = new Subject <cantProdCanasta>()
+
   ngOnInit(){
     localStorage.setItem(  "activo" , this.paginaCatalogo)
     
@@ -119,6 +124,7 @@ function changeJson(id,params){
       //localStorage.setItem(unidadesApart,unidadesApartadas);
       localStorage.setItem(imagen,imagenProducto);
       localStorage.setItem('ProductosApartdosPosicion'+String(posicionInt),posicionProducto);
+      let f = parseInt(localStorage.getItem('productosenCanasta'));
       
       
       
@@ -129,7 +135,10 @@ function changeJson(id,params){
         console.log('dentro del if');
     }
     
-      else { 
+      else {
+          f=f+1;
+          localStorage.setItem('productosenCanasta', String(f));
+          console.log('productos variados: '+ String(f)); 
            localStorage.setItem(enCanasta,'true'); //se registra que ya está en canasta
            console.log("entro al else"); //de lo contrario se iniciaran las variables en la posicion correspondiente
            localStorage.setItem(unidadesApart,unidadesApartadas);//se inicializar esta variable

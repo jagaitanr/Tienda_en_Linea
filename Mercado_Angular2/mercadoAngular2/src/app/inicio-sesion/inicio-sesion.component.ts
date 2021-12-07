@@ -60,7 +60,8 @@ resetearVariables(){
     localStorage.setItem(unidadesDispo, '');
     localStorage.setItem(unidadesApart, '');
     localStorage.setItem(imagen, '');
-    localStorage.setItem(enCanasta, 'false');
+    localStorage.setItem(enCanasta, 'false'); //determina si x producto esta en el carrito
+    localStorage.setItem('productosenCanasta', '0');// cantidad de la variedad de productos que se meten al carrito
     
     }
 

@@ -30,4 +30,5 @@ export class BarraSuperiorComponent implements OnInit {
     this.router.navigate(['/inicio-sesion'])
   }
 
+  productosenCanasta=localStorage.getItem('productosenCanasta');
 }
