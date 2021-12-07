@@ -31,8 +31,9 @@ getDatos(){
     */
    let database_firebase = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/'+String(posicion)+'.json';
 try {
-   return this.http.put(database_firebase, JSON.stringify({imagen:a_imagen, nombre: b_nombre, precio: c_precio, unidadesDisponibles: d_unidadesDisponibles  })).subscribe((res:Response) => {
-    console.log(res);
+   //return this.http.put(database_firebase, JSON.stringify({imagen:a_imagen, nombre: b_nombre, precio: c_precio, unidadesDisponibles: d_unidadesDisponibles  })).subscribe((res:Response) => {
+    return this.http.put(database_firebase, JSON.stringify({imagen:a_imagen, nombre:b_nombre, precio: c_precio, unidadesDisponibles: d_unidadesDisponibles  })).subscribe((res:Response) => {
+      console.log(res);
     return res;
     })
 }

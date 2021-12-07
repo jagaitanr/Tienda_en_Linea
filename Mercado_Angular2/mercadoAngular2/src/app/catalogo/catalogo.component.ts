@@ -12,6 +12,7 @@ import { Response } from '@angular/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { getDatabase, ref, child, get,  } from '@firebase/database';
 import { stringify } from 'querystring';
+import { Router } from '@angular/router';
 
 
 
@@ -29,7 +30,7 @@ export class CatalogoComponent implements OnInit{
     Variable1:DataService;
     paginaCatalogo:string;
 
-  constructor(private dataService: DataService, httpService: HttpService){}
+  constructor(private dataService: DataService, httpService: HttpService, private router: Router){}
   
   ngOnInit(){
     localStorage.setItem(  "activo" , this.paginaCatalogo)

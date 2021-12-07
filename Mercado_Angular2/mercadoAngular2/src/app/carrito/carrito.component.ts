@@ -13,6 +13,7 @@ import { Response } from '@angular/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { getDatabase, ref, child, get,  } from '@firebase/database';
 import internal from 'assert';
+import { CatalogoComponent } from 'app/catalogo/catalogo.component';
 
 @Component({
   selector: 'app-carrito',
@@ -73,6 +74,7 @@ escribirArreglo()
       let b = 'ProductosApartadosSubtotal'+ String(i);
       let c = parseInt(localStorage.getItem(precio))* parseInt(localStorage.getItem(unidadesApart));
       let d = String(c);
+      let pos:number = i;
       
       
        
@@ -85,10 +87,10 @@ escribirArreglo()
       console.log(String(i)+localStorage.getItem(nombre));
       this.arreglo[j]= {imagen:localStorage.getItem(imagen), nombre:localStorage.getItem(nombre),
          precio: localStorage.getItem(precio), unidadesDisponibles:localStorage.getItem(unidadesDispo),
-          unidadesApartadas:localStorage.getItem(unidadesApart), posicion:i, subtotal:d};
-          let d_unidadesDisponibles = parseInt(this.arreglo[i].unidadesDisponibles)-parseInt(this.arreglo[i].unidadesApartadas);
-      
-          console.log("el arreglo en este punto es: "+ JSON.stringify(this.arreglo[j]));
+          unidadesApartadas:localStorage.getItem(unidadesApart), posicion:pos, subtotal:d};
+          //let d_unidadesDisponibles = parseInt(this.arreglo[j].unidadesDisponibles)-parseInt(this.arreglo[j].unidadesApartadas);
+          //console.log("las unidades disponibles son: "+ d_unidadesDisponibles);
+          //onsole.log("el arreglo en este punto es: "+ JSON.stringify(this.arreglo[j]));
           j=j+1;  
       }
     }
@@ -108,9 +110,9 @@ escribirArreglo()
    comprarProductos(){
     
 
-    let  s = this.arreglo3.length;
+    let  s = this.arreglo.length;
 
-      for (let i=0; i<=s; i++)
+      for (let i=0; i<=s-1; i++)
       {
 
       
@@ -120,25 +122,35 @@ escribirArreglo()
       let unidadesApart:string='ProductosApartadosUniApartadas'+ String(i);
       let imagen:string='ProductosApartadosImagen'+ String(i);
       
-      let pos = this.arreglo[i].posicion;
+        let pos = this.arreglo[i].posicion;
+      console.log("la posicion es: "+ (this.arreglo[i].posicion));
       let a_imagen = this.arreglo[i].imagen;
+      console.log("la imagen es: "+ (this.arreglo[i].imagen));
       let b_nombre = this.arreglo[i].nombre;
+      console.log("el nombre es: "+ (this.arreglo[i].nombre));
       let c_precio = parseInt(this.arreglo[i].precio);
-      let d_unidadesDisponibles = parseInt(this.arreglo[i].unidades_disponibles)-parseInt(this.arreglo3[i].unidadesApartadas[i]);
+      console.log("el precio  es: "+ (this.arreglo[i].precio));
+      let d_unidadesDisponibles = parseInt(this.arreglo[i].unidadesDisponibles)-parseInt(this.arreglo[i].unidadesApartadas);
       console.log("las unidades disponibles son: "+ d_unidadesDisponibles);
       
-      
+     
 
     this.httpService.agregarProducto(pos, a_imagen, b_nombre, c_precio, d_unidadesDisponibles);
-      
       }
+
+      for (let i=0; i<=20; i++){
+        let a = 'ProductosApartadosenCanasta'+String(i);
+        localStorage.setItem(a,'false');
+      }
+      this.retornarPagina();
+        
    }
 
   retornarPagina(){
     //VariablesGlobales.pagina_actual='catalogo';
     localStorage.setItem("VariablesGlobales.pagina_actual","catalogo")
 
-    console.log("estoy en retornar pagina: "+ VariablesGlobales.pagina_actual);
+    console.log("estoy en retornar pagina: "+ localStorage.getItem("VariablesGlobales.pagina_actual"));
     }
      arreglo3 = this.arreglo;
      }

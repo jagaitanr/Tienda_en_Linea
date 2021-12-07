@@ -27,7 +27,7 @@ export class BarraSuperiorComponent implements OnInit {
   inicio(){
     localStorage.setItem("VariablesGlobales.pagina_actual", "inicio");
     console.log('la pagina actual es> '+VariablesGlobales.pagina_actual);
-    this.router.navigate(['/pagina-principal'])
+    this.router.navigate(['/inicio-sesion'])
   }
 
 }
