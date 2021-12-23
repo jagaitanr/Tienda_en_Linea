@@ -15,6 +15,7 @@ import { stringify } from 'querystring';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable'; // Observable para las notificaciones
 import { Subject } from 'rxjs/Subject'; // generar los eventos para el observables
+import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.component';
 
 
 
@@ -31,11 +32,11 @@ export class CatalogoComponent implements OnInit{
     vegetales2:any;
     Variable1:DataService;
     paginaCatalogo:string;
+    cantProdCanasta: String;
 
-  constructor(private dataService: DataService, httpService: HttpService, private router: Router){}
-  
-  cantProdCanasta: String;
-  private notificacion$ = new Subject <cantProdCanasta>()
+  constructor( private dataService: DataService, httpService: HttpService, private router: Router){}
+  //private barraSuperior:BarraSuperiorComponent
+ // private notificacion$ = new Subject <cantProdCanasta>()
 
   ngOnInit(){
     localStorage.setItem(  "activo" , this.paginaCatalogo)
@@ -150,6 +151,11 @@ function changeJson(id,params){
           let nombreTemporal : string = "ProductosApartadosNombre"+ String(i)
           console.log (localStorage.getItem(nombreTemporal));
             }
+
+           // this.router.navigateByUrl('/app-barra-superior', {skipLocationChange: true}).then(()=>
+           // this.router.navigate(["app-catalogo"]));
+           this.ngOnInit();
+
       }//corchete del try
       catch(e){console.log ("el error es: "+ e);}
      
