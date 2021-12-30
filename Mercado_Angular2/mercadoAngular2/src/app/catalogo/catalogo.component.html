@@ -1,4 +1,5 @@
 
+[productosenCanasta2]="7"
 <div class = container3>
   <div class = "row">
     <div class ="col l6 s6 m6 valign-wrapper">Catálogo de productos</div>
@@ -21,7 +22,7 @@
        <button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>
       <!--<button id="verbaseDatos" class="btn-small indigo ligthen-4" (click)="mostrarBaseDatos()">mostrar base de datos en consola</button> -->
       <!-- <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="AgregandoProductos(h.value, item.nombre, item.unidadesDisponibles)">añadir</button>-->
-       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, posicion,  h.value)">añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
+       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, posicion,  h.value)" >añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
     </div>
    
   </div>

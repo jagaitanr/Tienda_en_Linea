@@ -3,16 +3,18 @@ import { HttpService } from './http.service';
 import { Response } from '@angular/http';
 import {getDatabase, ref, child, get} from "firebase/database";
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Subject } from 'rxjs';
+import {Observable} from 'rxjs';
 
 
 
 @Injectable()
 export class DataService {
 
+  private canasta$ = new Subject<string>();
   private vegetales: any[]=[] ;
   constructor( private httpService : HttpService, private http: HttpService) { }
-
+  
 
 
   getVegetales(){
@@ -47,33 +49,20 @@ export class DataService {
 
   
   
-  getUnProducto(nombre: string){
+  /*getUnProducto(nombre: string){
     const urlProdOne = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/${nombre}/.json';
     //return this.http.get(urlProdOne);
   
   }
-/*
-  agregarProductoData(nombre, precio, imagen, unidades_disponibles){
-    const db = getDatabase();
-  
-    const postData = {
-      nombre_Actualizado : nombre,
-      precio_Actualizado :  precio,
-      imagen_Actualizada : imagen,
-      unidades_Actualizada: unidades_disponibles
-  
-    };
 
-    //const newPostKey = push(child(ref(db), 'posts')).key;
+  getCanasta$():Observable<string>{
+     return this.canasta$.asObservable();
+    console.log('hubo un cambio');
+    }
 
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    const updates = {};
-    updates['/posts/' + newPostKey] = postData;
-    updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-   
-    return update (ref (db), updates);
-  }
-  */
+  cambioCanasta() {//método donde cambia el valor y debe ser observado
+  this.canasta$.next(localStorage.getItem('productosenCanasta'))
+  }*/
 }
 
 

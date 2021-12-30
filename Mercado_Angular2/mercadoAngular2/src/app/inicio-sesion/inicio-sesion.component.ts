@@ -40,6 +40,7 @@ enviarFormulario(){
   if (email_ ==='jagaitanr@hotmail.com' &&  password_ === '1234'){
     
     this.router.navigate(['/pagina-principal']);
+    //localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
     localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
   
   }

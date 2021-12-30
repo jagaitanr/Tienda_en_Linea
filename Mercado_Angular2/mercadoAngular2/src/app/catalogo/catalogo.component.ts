@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as data from '../../assets/productos.json';
 import { UserService } from 'app/Services/user.service';
 import { DetalleproductoComponent } from 'app/detalleproducto/detalleproducto.component';
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable'; // Observable para las notificaciones
 import { Subject } from 'rxjs/Subject'; // generar los eventos para el observables
 import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.component';
+import { Injectable } from '@angular/core';
 
 
 
@@ -27,21 +28,36 @@ import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.compon
   })
 
 
-export class CatalogoComponent implements OnInit{
+export class CatalogoComponent implements OnDestroy, OnInit{
     vegetales: String [] = [];
     vegetales2:any;
     Variable1:DataService;
     paginaCatalogo:string;
     cantProdCanasta: String;
+    //ProductosCanasta: string;
+    ngOnDestroy(): void {
+    
+    }
 
-  constructor( private dataService: DataService, httpService: HttpService, private router: Router){}
+  private canasta$ = new Subject<string>();
+    
+
+    //private ProductosCanasta$ = new Subject<ProductosCanasta>();
+    
+
+  constructor(private dataService: DataService,
+              httpService: HttpService,
+              private router: Router,
+              ){}
   //private barraSuperior:BarraSuperiorComponent
  // private notificacion$ = new Subject <cantProdCanasta>()
+ 
 
-  ngOnInit(){
+  ngOnInit(): void{
     localStorage.setItem(  "activo" , this.paginaCatalogo)
     
   }
+  
   mostrarBaseDatos () {
       this.vegetales = this.dataService.getVegetales();
       console.log("la base de datos es: " + this.vegetales);
@@ -127,7 +143,7 @@ function changeJson(id,params){
       localStorage.setItem('ProductosApartdosPosicion'+String(posicionInt),posicionProducto);
       let f = parseInt(localStorage.getItem('productosenCanasta'));
       
-      
+      //this.dataService.cambioCanasta(); //invoco el servicio para que genere el evento de cambio en el valor de productos diferentes en canasta
       
       if (localStorage.getItem(enCanasta)==='true'){ //si es verdadero se sumara al actual unidades apartadas
         var a = parseInt(localStorage.getItem(unidadesApart))+parseInt(unidadesApartadas);
@@ -154,12 +170,15 @@ function changeJson(id,params){
 
            // this.router.navigateByUrl('/app-barra-superior', {skipLocationChange: true}).then(()=>
            // this.router.navigate(["app-catalogo"]));
-           this.ngOnInit();
+           //this.ngOnInit();
+           //this.canasta$.next(localStorage.getItem('productosenCanasta'));//notifico el subject para el observable
 
       }//corchete del try
       catch(e){console.log ("el error es: "+ e);}
      
   }
+
+  
 /*
   ComprarProducto(nombreProducto, numerodeProductos, unidadesDisponibles)
   {

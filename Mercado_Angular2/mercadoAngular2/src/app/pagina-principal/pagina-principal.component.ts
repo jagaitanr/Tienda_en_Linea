@@ -18,6 +18,7 @@ export class PaginaPrincipalComponent implements OnInit {
   ngOnInit() {
   //this.paginaElegida = VariablesGlobales.pagina_actual;
   this.paginaElegida = localStorage.getItem("VariablesGlobales.pagina_actual");
+  console.log('la pagina actual es:  '+ this.paginaElegida);
   
   }
   
