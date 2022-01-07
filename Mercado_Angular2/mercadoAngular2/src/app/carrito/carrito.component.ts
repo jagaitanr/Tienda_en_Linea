@@ -22,18 +22,21 @@ import { CatalogoComponent } from 'app/catalogo/catalogo.component';
 })
 export class CarritoComponent implements OnInit   {
 
-  constructor(private httpService : HttpService, private http: HttpService) {}
+  constructor(private httpService : HttpService, private http: HttpService, private dataService : DataService) {}
   arreglo: any [] = [];
   total_1: number;
   total_2: string;
  arreglo2: any[]=[];
  //lista:any []= [{imagen:VariablesGlobales.productosAnadidosImagen, nombre:'uno', precio:2000 },{ nombre:'dos',precio:1500}];
-  ngOnInit() {
+ 
+ cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
+ ngOnInit() {
     
     this.escribirArreglo();
-
+ }
+   
     //  VariablesGlobales.productoenCanasta[i] = localStorage.getItem(a); //recupero los datos
-        }
+        
      
 
 quitarProducto(nombreQuitar){
@@ -50,9 +53,8 @@ quitarProducto(nombreQuitar){
        console.log("falso o verdadero:" + localStorage.getItem(c));
      }
    }
-   
-   
-}
+   this.dataService.cambioCanasta(); //invoco el servicio para que genere el evento de cambio en el valor de productos diferentes en canasta
+  }
 
 escribirArreglo()
    {
@@ -60,7 +62,7 @@ escribirArreglo()
     let j=0;
     let s = this.arreglo.length;
     this.arreglo.splice(s-1,1); //para quitar el último elemento del arreglo y poder reescribir
-    console.log("la longitud del arreglo es: "+s);
+    localStorage.setItem('productosenCanasta',String(s));
     let total = 0;
     for (let i=0 ; i<=20 ; i++){
     
@@ -94,6 +96,10 @@ escribirArreglo()
           j=j+1;  
       }
     }
+    let k=(this.arreglo.length);  //acá tomo el largo del arrego que está en carrito para tener en cuenta los
+    console.log("la longitud del arreglo es: ", String(k));//productos que se quitan y actualizar en la notificación
+    localStorage.setItem('productosenCanasta', String(k));//la cantidad de  productos diferentes en canasta
+    
    }
 
    cancelarProductos(){
@@ -104,7 +110,8 @@ escribirArreglo()
      } 
       this.total_1 = 0;
       this.total_2 = '$ '+String(this.total_1);
-
+     localStorage.setItem('productosenCanasta','0');
+     this.dataService.cambioCanasta();
    }
 
    comprarProductos(){
@@ -138,11 +145,15 @@ escribirArreglo()
     this.httpService.agregarProducto(pos, a_imagen, b_nombre, c_precio, d_unidadesDisponibles);
       }
 
+      
       for (let i=0; i<=20; i++){
         let a = 'ProductosApartadosenCanasta'+String(i);
         localStorage.setItem(a,'false');
-      }
+        this.escribirArreglo();
+         } 
+      localStorage.setItem('productosenCanasta','0');
       this.retornarPagina();
+      this.dataService.cambioCanasta();//actualizar la notificación en la barra superios
         
    }
 
@@ -151,6 +162,7 @@ escribirArreglo()
     localStorage.setItem("VariablesGlobales.pagina_actual","catalogo")
 
     console.log("estoy en retornar pagina: "+ localStorage.getItem("VariablesGlobales.pagina_actual"));
-    }
+    this.dataService.actualizarPagPrincipal();  
+  }
      arreglo3 = this.arreglo;
      }

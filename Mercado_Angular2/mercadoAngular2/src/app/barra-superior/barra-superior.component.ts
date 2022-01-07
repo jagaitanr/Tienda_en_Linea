@@ -20,30 +20,19 @@ export class BarraSuperiorComponent implements OnInit {
   //canasta$: Observable<string>;
   constructor(private router: Router, private dataService: DataService) {
 
-    this.dataService.getCanasta$.subscribe(()=>{this.ngOnInit();});
   }
+  cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
 
-     ngOnInit() {//productosenCanasta=localStorage.getItem('productosenCanasta');
-      //this.canasta$=this.dataService.getCanasta$();
-      //this.canasta$.subscribe(productosenCanasta=>this.productosenCanasta2=this.productosenCanasta2);
-      //localStorage.setItem('productosenCanasta', this.productosenCanasta2);
+
+     ngOnInit() {
+
       this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
-
       this.suscription = this.dataService.getCanasta$().subscribe(()=>{
-      console.log('recarga de barra superior')
+      //console.log('recarga de barra superior')
       this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
-      //this.recargaPag();
           })
     }
-    recargaPag(){
-      console.log('estoy recargando componente');
-      //this.ngOnInit();
-      //this.router.navigateByUrl('/app-barra-superior', {skipLocationChange: true}).then(()=>
-      //this.router.navigate(["/app-barra-superior"]));
-      this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
-
-    }
-
+    
 
    catalogo(){
     localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
@@ -62,7 +51,6 @@ export class BarraSuperiorComponent implements OnInit {
     this.router.navigate(['/inicio-sesion'])
   }
 
-  productosenCanasta=localStorage.getItem('productosenCanasta');
+  //productosenCanasta=localStorage.getItem('productosenCanasta');
   //productosenCanasta=this.productosenCanasta2;
-  cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
-}
+  }
