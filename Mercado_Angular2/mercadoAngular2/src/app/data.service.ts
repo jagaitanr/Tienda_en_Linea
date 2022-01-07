@@ -5,13 +5,14 @@ import {getDatabase, ref, child, get} from "firebase/database";
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators'
 
 
 
 @Injectable()
 export class DataService {
 
-  private canasta$ = new Subject<string>();
+  private canasta$ = new Subject<void>(); //variable subject para el observable
   private vegetales: any[]=[] ;
   constructor( private httpService : HttpService, private http: HttpService) { }
   
@@ -41,28 +42,24 @@ export class DataService {
   }
 
 
-  postVegetales(nombreProducto){this.httpService.sendDatos({nombreProducto})
+  postVegetales(nombreProducto) {this.httpService.sendDatos({nombreProducto})
   .subscribe((data: Response)=> console.log(data))
   }
 
-  //agregarProductoA(posicionA, unidadesA){this.httpService.agregarProducto(posicionA, unidadesA)}
+  getCanasta$(){ //funcion que se ejecuta cuando el compomente que se suscribe  al observable es llamado
+    return this.canasta$;
+    //console.log('entro a getCanasta$')
+   }
 
-  
-  
-  /*getUnProducto(nombre: string){
-    const urlProdOne = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/${nombre}/.json';
-    //return this.http.get(urlProdOne);
-  
-  }
+   cambioCanasta():Observable<any> {//método donde cambia el valor y debe ser observado
+    this.canasta$.next();
+    //console.log('entro a cambio canasta')
+    return this.canasta$;
+    
+   }
+   
 
-  getCanasta$():Observable<string>{
-     return this.canasta$.asObservable();
-    console.log('hubo un cambio');
-    }
 
-  cambioCanasta() {//método donde cambia el valor y debe ser observado
-  this.canasta$.next(localStorage.getItem('productosenCanasta'))
-  }*/
 }
 
 

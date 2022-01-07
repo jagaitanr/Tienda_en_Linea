@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { VariablesGlobales } from 'app/common/Variables-globales';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CatalogoComponent } from 'app/catalogo/catalogo.component';
 import { DataService } from 'app/data.service';
 
@@ -16,6 +16,7 @@ import { DataService } from 'app/data.service';
 export class BarraSuperiorComponent implements OnInit {
 
   @Input () productosenCanasta2 :string;
+  suscription: Subscription;
   //canasta$: Observable<string>;
   constructor(private router: Router, private dataService: DataService) { }
 
@@ -23,8 +24,23 @@ export class BarraSuperiorComponent implements OnInit {
       //this.canasta$=this.dataService.getCanasta$();
       //this.canasta$.subscribe(productosenCanasta=>this.productosenCanasta2=this.productosenCanasta2);
       //localStorage.setItem('productosenCanasta', this.productosenCanasta2);
-      }
-      
+      this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
+
+      this.suscription = this.dataService.getCanasta$().subscribe(()=>{
+      console.log('recarga de barra superior')
+      this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
+      //this.recargaPag();
+          })  
+    }
+    recargaPag(){
+      console.log('estoy recargando componente');
+      //this.ngOnInit();
+      //this.router.navigateByUrl('/app-barra-superior', {skipLocationChange: true}).then(()=>
+      //this.router.navigate(["/app-barra-superior"]));
+      this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
+
+    }
+
 
    catalogo(){
     localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
