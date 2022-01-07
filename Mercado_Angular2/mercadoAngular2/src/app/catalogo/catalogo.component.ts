@@ -146,7 +146,6 @@ function changeJson(id,params){
       localStorage.setItem('ProductosApartdosPosicion'+String(posicionInt),posicionProducto);
       let f = parseInt(localStorage.getItem('productosenCanasta'));
       
-      //this.dataService.cambioCanasta(); //invoco el servicio para que genere el evento de cambio en el valor de productos diferentes en canasta
       
       if (localStorage.getItem(enCanasta)==='true'){ //si es verdadero se sumara al actual unidades apartadas
         var a = parseInt(localStorage.getItem(unidadesApart))+parseInt(unidadesApartadas);
@@ -162,7 +161,8 @@ function changeJson(id,params){
            localStorage.setItem(enCanasta,'true'); //se registra que ya está en canasta
            console.log("entro al else"); //de lo contrario se iniciaran las variables en la posicion correspondiente
            localStorage.setItem(unidadesApart,unidadesApartadas);//se inicializar esta variable
-           }
+           this.dataService.cambioCanasta(); //invoco el servicio para que genere el evento de cambio en el valor de productos diferentes en canasta
+          }
 
      
       console.log("los productos apartados son: ");

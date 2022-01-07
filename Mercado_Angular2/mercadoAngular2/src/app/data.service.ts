@@ -5,23 +5,21 @@ import {getDatabase, ref, child, get} from "firebase/database";
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import {Observable} from 'rxjs';
-import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
-import { Component } from '@angular/core';
-
+import {tap} from 'rxjs/operators'
 
 
 
 @Injectable()
 export class DataService {
 
-  private canasta = new Subject<any>();
+  private canasta$ = new Subject<void>(); //variable subject para el observable
   private vegetales: any[]=[] ;
   constructor( private httpService : HttpService,
                private http: HttpService//,
                //private barra: BarraSuperiorComponent
                ) { }
-  
-               
+
+
   getCanasta$=this.canasta.asObservable();
 
   actualizarBarra(){
@@ -43,35 +41,31 @@ export class DataService {
          //console.log('temp: '+temp);
          var temp2 = JSON.parse(temp);
          console.log('temp2' + temp2);*/
-         //this.vegetales = aux;    
+         //this.vegetales = aux;
         }
        )
        console.log('los vegetales son:' + JSON.stringify(this.vegetales));
     return this.vegetales;
-    
+
   }
 
 
-  postVegetales(nombreProducto){this.httpService.sendDatos({nombreProducto})
+  postVegetales(nombreProducto) {this.httpService.sendDatos({nombreProducto})
   .subscribe((data: Response)=> console.log(data))
   }
 
-  
+  getCanasta$(){ //funcion que se ejecuta cuando el compomente que se suscribe  al observable es llamado
+    return this.canasta$;
+    //console.log('entro a getCanasta$')
+   }
 
-  //agregarProductoA(posicionA, unidadesA){this.httpService.agregarProducto(posicionA, unidadesA)}
+   cambioCanasta():Observable<any> {//método donde cambia el valor y debe ser observado
+    this.canasta$.next();
+    //console.log('entro a cambio canasta')
+    return this.canasta$;
 
-  
-  
-  getUnProducto(nombre: string){
-    const urlProdOne = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/${nombre}/.json';
-    //return this.http.get(urlProdOne);
-  
-  }
+   }
 
-    
 
-  /*cambioCanasta() {//método donde cambia el valor y debe ser observado
-  this.canasta.next();  
-  }*/
+
 }
-
