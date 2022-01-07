@@ -6,7 +6,7 @@
 
   <div class = "row">
    <div *ngIf="paginaElegida==='catalogo'">
-     <app-catalogo>app catalogo</app-catalogo>
+     <app-catalogo myEvent="app-barra-superior.carrito">app catalogo</app-catalogo>
      <router-outlet></router-outlet>
    </div>
    <div  *ngIf="paginaElegida==='PagDetalleProducto'">

@@ -15,6 +15,8 @@ export class PaginaPrincipalComponent implements OnInit {
   //this.paginaElegida = VariablesGlobales.pagina_actual;
    }
 
+   
+
   ngOnInit() {
   //this.paginaElegida = VariablesGlobales.pagina_actual;
   this.paginaElegida = localStorage.getItem("VariablesGlobales.pagina_actual");
@@ -24,3 +26,5 @@ export class PaginaPrincipalComponent implements OnInit {
   
 
 }
+
+export class CatalogoComponent{};

@@ -5,17 +5,28 @@ import {getDatabase, ref, child, get} from "firebase/database";
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import {Observable} from 'rxjs';
+import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
+import { Component } from '@angular/core';
+
 
 
 
 @Injectable()
 export class DataService {
 
-  private canasta$ = new Subject<string>();
+  private canasta = new Subject<any>();
   private vegetales: any[]=[] ;
-  constructor( private httpService : HttpService, private http: HttpService) { }
+  constructor( private httpService : HttpService,
+               private http: HttpService//,
+               //private barra: BarraSuperiorComponent
+               ) { }
   
+               
+  getCanasta$=this.canasta.asObservable();
 
+  actualizarBarra(){
+    this.canasta.next();  //actualiza la barra superior para el componente catalogo
+    }
 
   getVegetales(){
     this.httpService.getDatos()
@@ -45,24 +56,22 @@ export class DataService {
   .subscribe((data: Response)=> console.log(data))
   }
 
+  
+
   //agregarProductoA(posicionA, unidadesA){this.httpService.agregarProducto(posicionA, unidadesA)}
 
   
   
-  /*getUnProducto(nombre: string){
+  getUnProducto(nombre: string){
     const urlProdOne = 'https://bigfood-4ef10-default-rtdb.firebaseio.com/${nombre}/.json';
     //return this.http.get(urlProdOne);
   
   }
 
-  getCanasta$():Observable<string>{
-     return this.canasta$.asObservable();
-    console.log('hubo un cambio');
-    }
+    
 
-  cambioCanasta() {//método donde cambia el valor y debe ser observado
-  this.canasta$.next(localStorage.getItem('productosenCanasta'))
+  /*cambioCanasta() {//método donde cambia el valor y debe ser observado
+  this.canasta.next();  
   }*/
 }
-
 

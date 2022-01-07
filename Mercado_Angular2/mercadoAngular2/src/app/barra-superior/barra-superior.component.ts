@@ -17,13 +17,18 @@ export class BarraSuperiorComponent implements OnInit {
 
   @Input () productosenCanasta2 :string;
   //canasta$: Observable<string>;
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService) { 
+    
+    this.dataService.getCanasta$.subscribe(()=>{this.ngOnInit();});
+  }
 
      ngOnInit() {//productosenCanasta=localStorage.getItem('productosenCanasta');
       //this.canasta$=this.dataService.getCanasta$();
       //this.canasta$.subscribe(productosenCanasta=>this.productosenCanasta2=this.productosenCanasta2);
       //localStorage.setItem('productosenCanasta', this.productosenCanasta2);
-      }
+      console.log("inicio de app-barra-superior en funcion ngOnInit");
+
+    }
       
 
    catalogo(){

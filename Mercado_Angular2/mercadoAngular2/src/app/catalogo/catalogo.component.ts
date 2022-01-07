@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import * as data from '../../assets/productos.json';
 import { UserService } from 'app/Services/user.service';
 import { DetalleproductoComponent } from 'app/detalleproducto/detalleproducto.component';
@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable'; // Observable para las notificacio
 import { Subject } from 'rxjs/Subject'; // generar los eventos para el observables
 import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.component';
 import { Injectable } from '@angular/core';
+import { EventEmitter } from 'events';
 
 
 
@@ -34,12 +35,14 @@ export class CatalogoComponent implements OnDestroy, OnInit{
     Variable1:DataService;
     paginaCatalogo:string;
     cantProdCanasta: String;
+
+    @Output()myEvent = new EventEmitter();
     //ProductosCanasta: string;
     ngOnDestroy(): void {
     
     }
 
-  private canasta$ = new Subject<string>();
+  //private canasta$ = new Subject<string>();
     
 
     //private ProductosCanasta$ = new Subject<ProductosCanasta>();
@@ -172,7 +175,8 @@ function changeJson(id,params){
            // this.router.navigate(["app-catalogo"]));
            //this.ngOnInit();
            //this.canasta$.next(localStorage.getItem('productosenCanasta'));//notifico el subject para el observable
-
+          //this.dataService.actualizarBarra();
+          this.myEvent.emit(null);
       }//corchete del try
       catch(e){console.log ("el error es: "+ e);}
      
