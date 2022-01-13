@@ -18,6 +18,7 @@ import { Subject } from 'rxjs/Subject'; // generar los eventos para el observabl
 import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.component';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from 'events';
+import { FilterPipe } from 'app/pipes/filter.pipe';
 
 
 
@@ -32,9 +33,17 @@ import { EventEmitter } from 'events';
 export class CatalogoComponent implements OnDestroy, OnInit{
     vegetales: String [] = [];
     vegetales2:any;
+    vegetalesFiltro: any []=[] ;
     Variable1:DataService;
     paginaCatalogo:string;
     cantProdCanasta: String;
+    filtro= ''; // se inicializa el filtro
+    habilitarFiltro : boolean = false;
+    habilitarFiltro2 : boolean = true;
+
+
+
+
 
     @Output()myEvent = new EventEmitter();
     //ProductosCanasta: string;
@@ -58,6 +67,15 @@ export class CatalogoComponent implements OnDestroy, OnInit{
 
   ngOnInit(): void{
     localStorage.setItem(  "activo" , this.paginaCatalogo)
+    this.vegetalesFiltro=this.dataService.getVegetales(); //inicializar esta variable para la busqueda
+    console.log('el array para el filtro es: ')
+    console.log (this.listaArray2);
+    this.habilitarFiltro = true;
+ if (this.filtro!='')
+ {
+   console.log('filtro ya no es vacio')
+ }   
+    
     
   }
   
@@ -67,7 +85,8 @@ export class CatalogoComponent implements OnDestroy, OnInit{
   }
 
   listadeProductos = this.dataService.getVegetales();
-
+   listaArray : any[]=Array.of(this.listadeProductos);
+   listaArray2 = this.listaArray[0]; //se toma la posición 0 ya que al pasar el json a array, en la posición 0 es donde se desglosa el resto de datos
   leerNombre(nombre){
     console.log("el producto es: " + nombre);
     VariablesGlobales.detalle_producto=nombre;
@@ -196,9 +215,9 @@ function changeJson(id,params){
      this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
   }
 */
-  MensajePadre = "ajo";
+  //MensajePadre = "ajo";
 
-  listadeProductos2 : any = data;
+ // listadeProductos2 : any = data;
   //console.log('los productos en canasta son:' +VariablesGlobales.productoenCanasta); 
     
 
