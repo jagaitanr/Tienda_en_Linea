@@ -7,7 +7,7 @@
     <div class ="col l3 s3 m3 valign-wrapper">
       <div class= "row">¿Qué estás buscando?</div>
         <div class= "row">
-          <input type= "text" class= "form-control buscar" placeholder="Buscar" [(ngModel)]="filtro" name='filtro'/>
+          <input type= "text" class= "form-control buscar" placeholder="Buscar" [(ngModel)]="filtro" name='filtro' (keydown)='habilitarFiltroFunct()'/>
         </div>  
     </div>
     
@@ -23,11 +23,11 @@
        <button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>
       <!--<button id="verbaseDatos" class="btn-small indigo ligthen-4" (click)="mostrarBaseDatos()">mostrar base de datos en consola</button> -->
       <!-- <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="AgregandoProductos(h.value, item.nombre, item.unidadesDisponibles)">añadir</button>-->
-       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, posicion,  h.value)" >añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
+       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, item.posicion,  h.value)" >añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
     </div>
   </template>
    <template [ngIf]="habilitarFiltro2">
-    <div class = "card"  *ngFor="let item of listaArray2; let posicion = index">
+    <div class = "card"  *ngFor="let item of listaArray2">
       <img src={{item.imagen}} alt="">
       <h6>Producto: {{item.nombre}}</h6>
       <p>Precio:{{item.precio}}</p>
@@ -35,7 +35,7 @@
        <button id="verDetalle" class="btn-small indigo ligthen-4" routerLink='/detalle-producto' (click)="leerNombre(item.nombre)">ver mas</button>
       <!--<button id="verbaseDatos" class="btn-small indigo ligthen-4" (click)="mostrarBaseDatos()">mostrar base de datos en consola</button> -->
       <!-- <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="AgregandoProductos(h.value, item.nombre, item.unidadesDisponibles)">añadir</button>-->
-       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, posicion,  h.value)" >añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
+       <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, item.posicion,  h.value)" >añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
     </div>
    </template>
    
