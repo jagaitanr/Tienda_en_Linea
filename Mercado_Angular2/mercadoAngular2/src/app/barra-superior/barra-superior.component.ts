@@ -26,10 +26,10 @@ export class BarraSuperiorComponent implements OnInit {
 
      ngOnInit() {
 
-      this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
+      this.cantProdCanasta=parseInt(localStorage.getItem('CantidadproductosenCanasta'));
       this.suscription = this.dataService.getCanasta$().subscribe(()=>{
       //console.log('recarga de barra superior')
-      this.cantProdCanasta=parseInt(localStorage.getItem('productosenCanasta'));
+      this.cantProdCanasta=parseInt(localStorage.getItem('CantidadproductosenCanasta'));
           })
     }
     

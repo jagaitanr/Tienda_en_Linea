@@ -18,7 +18,7 @@ import { Subject } from 'rxjs/Subject'; // generar los eventos para el observabl
 import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.component';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from 'events';
-import { FiltrobuscarPipe } from 'app/filtrobuscar.pipe';
+import { FilterPipe } from 'app/pipes/filter.pipe';
 
 
 
@@ -33,12 +33,18 @@ import { FiltrobuscarPipe } from 'app/filtrobuscar.pipe';
 export class CatalogoComponent implements OnDestroy, OnInit{
     vegetales: String [] = [];
     vegetales2:any;
+    vegetalesFiltro: any []=[] ;
     Variable1:DataService;
     paginaCatalogo:string;
     cantProdCanasta: String;
-    formulario = document.querySelector("inputBuscadorText");
-    
-   
+    filtro= ''; // se inicializa el filtro
+    habilitarFiltro : boolean = false;
+    habilitarFiltro2 : boolean = true;
+
+
+
+
+
     @Output()myEvent = new EventEmitter();
     //ProductosCanasta: string;
     ngOnDestroy(): void {
@@ -76,12 +82,16 @@ export class CatalogoComponent implements OnDestroy, OnInit{
  }
 
   ngOnInit(): void{
-    localStorage.setItem(  "activo" , this.paginaCatalogo);
+    localStorage.setItem(  "activo" , this.paginaCatalogo)
+    this.vegetalesFiltro=this.dataService.getVegetales(); //inicializar esta variable para la busqueda
+    console.log('el array para el filtro es: ')
+    console.log (this.listaArray2);
+    this.habilitarFiltro = true;
+ if (this.filtro!='')
+ {
+   console.log('filtro ya no es vacio')
+ }   
     
-    var inputBuscador =document.getElementById("inputBuscadorText");//guardo en la var inputBuscador el selector de la entrada de texto para el filtro
-    inputBuscador.addEventListener("keyup",this.filtrar); //cuando se oprime una letra me lleva al metodo filtrar, mediante el metodo de escucha addEventListener
-    
-
     
   }
 
@@ -92,8 +102,15 @@ export class CatalogoComponent implements OnDestroy, OnInit{
       console.log("la base de datos es: " + this.vegetales);
   }
 
-  listadeProductos = this.dataService.getVegetales();
+  habilitarFiltroFunct(){
+    console.log("entro a la habilitación del filtrrro");
+    this.habilitarFiltro=true;
+    this.habilitarFiltro2=false;
+  }
 
+  listadeProductos = this.dataService.getVegetales();
+   listaArray : any[]=Array.of(this.listadeProductos);
+   listaArray2 = this.listaArray[0]; //se toma la posición 0 ya que al pasar el json a array, en la posición 0 es donde se desglosa el resto de datos
   leerNombre(nombre){
     console.log("el producto es: " + nombre);
     VariablesGlobales.detalle_producto=nombre;
@@ -147,33 +164,32 @@ function changeJson(id,params){
  
   agregarProducto(imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, posicionProducto, unidadesApartadas)
   {
- try{
-    //let  productosAgregadosNombre: string []=[];
-      let posicionInt = parseInt(posicionProducto);
+ try{  //se declaran variables tipo let para luego almacenar cada propiedad del producto en el localStorage
+      let posicionInt = parseInt(posicionProducto);//se pasa a entero y sera el pos-indice de cada parámetro
       let nombre:string='ProductosApartadosNombre'+ String(posicionInt);//se prepara para crear una variable localhost
       let precio:string='ProductosApartadosPrecio'+ String(posicionInt);
       let unidadesDispo:string='ProductosApartadosUniDisponibles'+ String(posicionInt);
       let unidadesApart:string='ProductosApartadosUniApartadas'+ String(posicionInt);
       let imagen:string='ProductosApartadosImagen'+ String(posicionInt);
       let enCanasta:string = 'ProductosApartadosenCanasta'+ String(posicionInt);
-      console.log ("el item es: "+posicionInt + posicionProducto);
+      console.log ('el item es: '+ String(posicionProducto));
       console.log ('la imagen a agregar es: '+ imagenProducto);
-      console.log ('este articulo esta en canasta?: '+ localStorage.enCanasta);
+      console.log ('este articulo esta en canasta?: '+ localStorage.getItem(enCanasta));
       console.log ('el nombre del producto a agregar es : ' + nombreProducto);
       console.log ('el precio del producto a agregar es: ' + precioProducto);
       console.log ('las unidades disponibles del producto a agregar es: ' + unidadesDisponibles);
-      console.log ('la posición en el catalogo es: ' + posicionInt);
+      console.log ('la posición en el catalogo es: ' + posicionProducto);
       
       localStorage.setItem(nombre,nombreProducto);
       localStorage.setItem(precio,precioProducto);
       localStorage.setItem(unidadesDispo,unidadesDisponibles);
       //localStorage.setItem(unidadesApart,unidadesApartadas);
       localStorage.setItem(imagen,imagenProducto);
-      localStorage.setItem('ProductosApartdosPosicion'+String(posicionInt),posicionProducto);
-      let f = parseInt(localStorage.getItem('productosenCanasta'));
+      localStorage.setItem('ProductosApartadosPosicion'+String(posicionInt),posicionProducto);
+      let f = parseInt(localStorage.getItem('CantidadproductosenCanasta'));
       
       
-      if (localStorage.getItem(enCanasta)==='true'){ //si es verdadero se sumara al actual unidades apartadas
+      if (localStorage.getItem(enCanasta)=='true'){ //si es verdadero se sumara al actual unidades apartadas
         var a = parseInt(localStorage.getItem(unidadesApart))+parseInt(unidadesApartadas);
         localStorage.setItem(unidadesApart,String(a)); //
         console.log ('las unidades apartadas para este producto son: ' + localStorage.getItem(unidadesApart));
@@ -182,7 +198,7 @@ function changeJson(id,params){
     
       else {
           f=f+1;
-          localStorage.setItem('productosenCanasta', String(f));
+          localStorage.setItem('CantidadproductosenCanasta', String(f));
           console.log('productos variados: '+ String(f)); 
            localStorage.setItem(enCanasta,'true'); //se registra que ya está en canasta
            console.log("entro al else"); //de lo contrario se iniciaran las variables en la posicion correspondiente
@@ -222,9 +238,9 @@ function changeJson(id,params){
      this.dataService.agregarProductoA(10, numerodeProductos); //actualizar productos
   }
 */
-  MensajePadre = "ajo";
+  //MensajePadre = "ajo";
 
-  listadeProductos2 : any = data;
+ // listadeProductos2 : any = data;
   //console.log('los productos en canasta son:' +VariablesGlobales.productoenCanasta); 
     
 

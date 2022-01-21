@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validator, Validators } from  '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { VariablesGlobales } from 'app/common/Variables-globales';
 })
 
 export class InicioSesionComponent implements OnInit {
+  error: boolean=false;
 
   miFormulario: FormGroup;
   constructor(private router: Router) { }
@@ -37,12 +39,17 @@ enviarFormulario(){
   let password_ = this.miFormulario.get('password').value;
 
 
-  if (email_ ==='jagaitanr@hotmail.com' &&  password_ === '1234'){
+  if (email_ ==='usuario@hotmail.com' &&  password_ === '1234'){
     
     this.router.navigate(['/pagina-principal']);
     //localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
     localStorage.setItem("VariablesGlobales.pagina_actual", "catalogo");
   
+  }
+
+  else{
+    this.error=true;
+    //alert('usuario y/contraseña invalidos, verifique')
   }
 
 }
@@ -62,8 +69,7 @@ resetearVariables(){
     localStorage.setItem(unidadesApart, '');
     localStorage.setItem(imagen, '');
     localStorage.setItem(enCanasta, 'false'); //determina si x producto esta en el carrito
-    localStorage.setItem('productosenCanasta', '0');// cantidad de la variedad de productos que se meten al carrito
-    
+    localStorage.setItem('CantidadproductosenCanasta','0'); //inicializa la cantidad de productos diferentes dentro de la canasta
     }
 
 }

@@ -60,11 +60,12 @@ escribirArreglo()
    {
     
     let j=0;
-    let s = this.arreglo.length;
+    //let s = this.arreglo.length;
+    let s = parseInt(localStorage.getItem('CantidadproductosenCanasta'));
     this.arreglo.splice(s-1,1); //para quitar el último elemento del arreglo y poder reescribir
-    localStorage.setItem('productosenCanasta',String(s));
+    //localStorage.setItem('productosenCanasta',String(s));
     let total = 0;
-    for (let i=0 ; i<=20 ; i++){
+    for (let i=0 ; i<=20 ; i++){ //este bucle me permite renombrar las variables para ir leyendolas del localstorage cada uno de los parametros del producto
     
     
       let nombre = 'ProductosApartadosNombre'+String(i);
@@ -72,6 +73,7 @@ escribirArreglo()
       let unidadesDispo:string='ProductosApartadosUniDisponibles'+ String(i);
       let unidadesApart:string='ProductosApartadosUniApartadas'+ String(i);
       let imagen:string='ProductosApartadosImagen'+ String(i);
+      let posicion_:string='ProductosApartadosPosicion' + String(i);
       let a = 'ProductosApartadosenCanasta'+String(i);
       let b = 'ProductosApartadosSubtotal'+ String(i);
       let c = parseInt(localStorage.getItem(precio))* parseInt(localStorage.getItem(unidadesApart));
@@ -89,7 +91,7 @@ escribirArreglo()
       console.log(String(i)+localStorage.getItem(nombre));
       this.arreglo[j]= {imagen:localStorage.getItem(imagen), nombre:localStorage.getItem(nombre),
          precio: localStorage.getItem(precio), unidadesDisponibles:localStorage.getItem(unidadesDispo),
-          unidadesApartadas:localStorage.getItem(unidadesApart), posicion:pos, subtotal:d};
+          unidadesApartadas:localStorage.getItem(unidadesApart), posicion:localStorage.getItem(posicion_), subtotal:d};
           //let d_unidadesDisponibles = parseInt(this.arreglo[j].unidadesDisponibles)-parseInt(this.arreglo[j].unidadesApartadas);
           //console.log("las unidades disponibles son: "+ d_unidadesDisponibles);
           //onsole.log("el arreglo en este punto es: "+ JSON.stringify(this.arreglo[j]));
@@ -142,8 +144,9 @@ escribirArreglo()
       
      
 
-    this.httpService.agregarProducto(pos, a_imagen, b_nombre, c_precio, d_unidadesDisponibles);
-      }
+    this.httpService.agregarProducto(pos, a_imagen, b_nombre, c_precio, d_unidadesDisponibles); //hace la actualización en la base de datos
+  this.resetearVariables(); //resetear las variables para volver a empezar sin ir hasta inicio sesion    
+  }
 
       
       for (let i=0; i<=20; i++){
@@ -165,4 +168,29 @@ escribirArreglo()
     this.dataService.actualizarPagPrincipal();  
   }
      arreglo3 = this.arreglo;
-     }
+
+
+     resetearVariables(){  //cuando se compra se debe resetear y vaciar la canasta y dejar disponibles nuevamente los productos
+      //reseteando todas las variables involucradas
+  console.log('entro a resetear variables después de la rutina de compra');
+      for (let i=0; i<=20; i++){  
+        let nombre:string='ProductosApartadosNombre'+ String(i);//se prepara para crear una variable localhost
+        let precio:string='ProductosApartadosPrecio'+ String(i);
+        let unidadesDispo:string='ProductosApartadosUniDisponibles'+ String(i);
+        let unidadesApart:string='ProductosApartadosUniApartadas'+ String(i);
+        let imagen:string='ProductosApartadosImagen'+ String(i);
+        let enCanasta:string = 'ProductosApartadosenCanasta'+ String(i);//determina si i producto esta en canasta
+        let posicion:string = 'ProductosApartadosPosicion'+ String(i);
+      localStorage.setItem(nombre, '');
+      localStorage.setItem(precio, '');
+      localStorage.setItem(unidadesDispo, '');
+      localStorage.setItem(unidadesApart, '');
+      localStorage.setItem(imagen, '');
+      localStorage.setItem(enCanasta, 'false'); //con el false saca el producto de la canasta  
+      localStorage.setItem('CantidadproductosenCanasta', '0');// cantidad de la variedad de productos que se meten al carrito
+      
+      }
+  
+  }
+    }
+

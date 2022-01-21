@@ -14,6 +14,7 @@ import { FiltrobuscarPipe } from './filtrobuscar.pipe';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { DataService } from './data.service';
 import { CarritoComponent } from './carrito/carrito.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     CatalogoComponent,
     FiltrobuscarPipe,
     DetalleproductoComponent,
-    CarritoComponent
+    CarritoComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

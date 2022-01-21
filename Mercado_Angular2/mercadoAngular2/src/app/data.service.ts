@@ -45,7 +45,8 @@ export class DataService {
          //this.vegetales = aux;
         }
        )
-       console.log('los vegetales son:' + JSON.stringify(this.vegetales));
+       console.log(':');
+       //console.log(this.vegetales);
     return this.vegetales;
 
   }
