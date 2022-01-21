@@ -18,6 +18,7 @@ import { Subject } from 'rxjs/Subject'; // generar los eventos para el observabl
 import { BarraSuperiorComponent } from 'app/barra-superior/barra-superior.component';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from 'events';
+import { FiltrobuscarPipe } from 'app/filtrobuscar.pipe';
 
 
 
@@ -35,7 +36,9 @@ export class CatalogoComponent implements OnDestroy, OnInit{
     Variable1:DataService;
     paginaCatalogo:string;
     cantProdCanasta: String;
-
+    formulario = document.querySelector("inputBuscadorText");
+    
+   
     @Output()myEvent = new EventEmitter();
     //ProductosCanasta: string;
     ngOnDestroy(): void {
@@ -51,15 +54,38 @@ export class CatalogoComponent implements OnDestroy, OnInit{
   constructor(private dataService: DataService,
               httpService: HttpService,
               private router: Router,
-              ){}
+              ){
+                
+              }
   //private barraSuperior:BarraSuperiorComponent
  // private notificacion$ = new Subject <cantProdCanasta>()
- 
+
+
+ filtrar(){
+   console.log('oprimi tecla');
+   var inputBuscador =document.getElementById("inputBuscadorText");//guardo en la var inputBuscador el selector de la entrada de texto para el filtro
+   const texto = inputBuscador.nodeValue;
+   this.vegetales = this.dataService.getVegetales();
+   for (let producto of this.vegetales){ //producto va ha ser el primer objeto del array productos
+     //let nombre = producto.nombre.toLowerCase();
+     //if (nombre.indexOf(texto) !== -1){
+      //console.log(nombre);
+     //}
+   }
+
+ }
 
   ngOnInit(): void{
-    localStorage.setItem(  "activo" , this.paginaCatalogo)
+    localStorage.setItem(  "activo" , this.paginaCatalogo);
+    
+    var inputBuscador =document.getElementById("inputBuscadorText");//guardo en la var inputBuscador el selector de la entrada de texto para el filtro
+    inputBuscador.addEventListener("keyup",this.filtrar); //cuando se oprime una letra me lleva al metodo filtrar, mediante el metodo de escucha addEventListener
+    
+
     
   }
+
+
   
   mostrarBaseDatos () {
       this.vegetales = this.dataService.getVegetales();
