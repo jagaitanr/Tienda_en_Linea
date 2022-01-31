@@ -38,8 +38,8 @@ export class CatalogoComponent implements OnDestroy, OnInit{
     paginaCatalogo:string;
     cantProdCanasta: String;
     filtro= ''; // se inicializa el filtro
-    habilitarFiltro : boolean = false;
-    habilitarFiltro2 : boolean = true;
+    habilitarFiltro : boolean = false; //se utiliza para el html y poder mostrar todos los productos o solo los que entren al pipe
+    sinFiltro : boolean = true; // muestra todos los productos
 
 
 
@@ -87,7 +87,7 @@ export class CatalogoComponent implements OnDestroy, OnInit{
   habilitarFiltroFunct(){
     console.log("entro a la habilitación del filtrrro");
     this.habilitarFiltro=true;
-    this.habilitarFiltro2=false;
+    this.sinFiltro=false;
   }
 
   listadeProductos = this.dataService.getVegetales();
@@ -146,28 +146,30 @@ function changeJson(id,params){
  
   agregarProducto(imagenProducto, nombreProducto, precioProducto, unidadesDisponibles, posicionProducto, unidadesApartadas)
   {
- try{  //se declaran variables tipo let para luego almacenar cada propiedad del producto en el localStorage
-      let posicionInt = parseInt(posicionProducto);//se pasa a entero y sera el pos-indice de cada parámetro
-      let nombre:string='ProductosApartadosNombre'+ String(posicionInt);//se prepara para crear una variable localhost
-      let precio:string='ProductosApartadosPrecio'+ String(posicionInt);
-      let unidadesDispo:string='ProductosApartadosUniDisponibles'+ String(posicionInt);
-      let unidadesApart:string='ProductosApartadosUniApartadas'+ String(posicionInt);
-      let imagen:string='ProductosApartadosImagen'+ String(posicionInt);
-      let enCanasta:string = 'ProductosApartadosenCanasta'+ String(posicionInt);
-      console.log ('el item es: '+ String(posicionProducto));
+ try{  
+        //se declaran variables tipo let para luego almacenar cada propiedad del producto en el localStorage
+  
+        //let posicionInt = parseInt(posicionProducto);//se pasa a entero y sera el pos-indice de cada parámetro
+      let nombre:string='ProductosApartadosNombre'+ posicionProducto;//se prepara para crear una variable localhost
+      let precio:string='ProductosApartadosPrecio'+ posicionProducto;
+      let unidadesDispo:string='ProductosApartadosUniDisponibles'+ posicionProducto;
+      let unidadesApart:string='ProductosApartadosUniApartadas'+ posicionProducto;
+      let imagen:string='ProductosApartadosImagen'+ posicionProducto;
+      let enCanasta:string = 'ProductosApartadosenCanasta'+ posicionProducto; //esta variable me guarda un valor si ya está o no en canasta (True: en canasta)
       console.log ('la imagen a agregar es: '+ imagenProducto);
-      console.log ('este articulo esta en canasta?: '+ localStorage.getItem(enCanasta));
+      //console.log ('este articulo esta en canasta?: '+ localStorage.getItem(enCanasta));
       console.log ('el nombre del producto a agregar es : ' + nombreProducto);
       console.log ('el precio del producto a agregar es: ' + precioProducto);
       console.log ('las unidades disponibles del producto a agregar es: ' + unidadesDisponibles);
       console.log ('la posición en el catalogo es: ' + posicionProducto);
-      
+        
+      // almacenamiento del producto
       localStorage.setItem(nombre,nombreProducto);
       localStorage.setItem(precio,precioProducto);
       localStorage.setItem(unidadesDispo,unidadesDisponibles);
       //localStorage.setItem(unidadesApart,unidadesApartadas);
       localStorage.setItem(imagen,imagenProducto);
-      localStorage.setItem('ProductosApartadosPosicion'+String(posicionInt),posicionProducto);
+      localStorage.setItem('ProductosApartadosPosicion'+posicionProducto, posicionProducto);
       let f = parseInt(localStorage.getItem('CantidadproductosenCanasta'));
       
       
@@ -180,7 +182,7 @@ function changeJson(id,params){
     
       else {
           f=f+1;
-          localStorage.setItem('CantidadproductosenCanasta', String(f));
+          localStorage.setItem('CantidadproductosenCanasta', String(f)); //variable de localstorage con la cantidad de variedad de vegetales dentro de la canasta
           console.log('productos variados: '+ String(f)); 
            localStorage.setItem(enCanasta,'true'); //se registra que ya está en canasta
            console.log("entro al else"); //de lo contrario se iniciaran las variables en la posicion correspondiente
