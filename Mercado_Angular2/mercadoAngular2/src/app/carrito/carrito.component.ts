@@ -48,12 +48,17 @@ quitarProducto(nombreQuitar){
      if (localStorage.getItem(b)===nombreQuitar)
      {
        localStorage.setItem(c,'false');
-       this.ngOnInit();
        console.log("se va a quitar: "+localStorage.getItem(b));
        console.log("falso o verdadero:" + localStorage.getItem(c));
-     }
+       let m = parseInt(localStorage.getItem('CantidadproductosenCanasta'));//para restar 1 a la variedad de productos
+      if (m>=0){
+        m=m-1;
+        localStorage.setItem('CantidadproductosenCanasta',String(m))}//actualizamos la variedad de productos
+      }
+        
    }
    this.dataService.cambioCanasta(); //invoco el servicio para que genere el evento de cambio en el valor de productos diferentes en canasta
+   this.ngOnInit();
   }
 
 escribirArreglo()
@@ -137,9 +142,9 @@ escribirArreglo()
       console.log("la imagen es: "+ (this.arreglo[i].imagen));
       let b_nombre = this.arreglo[i].nombre;
       console.log("el nombre es: "+ (this.arreglo[i].nombre));
-      let c_precio = parseInt(this.arreglo[i].precio);
+      let c_precio = this.arreglo[i].precio;
       console.log("el precio  es: "+ (this.arreglo[i].precio));
-      let d_unidadesDisponibles = parseInt(this.arreglo[i].unidadesDisponibles)-parseInt(this.arreglo[i].unidadesApartadas);
+      let d_unidadesDisponibles = String(parseInt(this.arreglo[i].unidadesDisponibles)-parseInt(this.arreglo[i].unidadesApartadas));
       console.log("las unidades disponibles son: "+ d_unidadesDisponibles);
       
      

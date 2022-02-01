@@ -1,5 +1,4 @@
 
-
 <div class = container3>
   <div class = "row">
     <div class ="col l6 s6 m6 valign-wrapper">Catálogo de productos</div>
@@ -26,7 +25,7 @@
        <button id= "btncompra" class="btn-small amber ligthen-4 rigth" (click)="agregarProducto(item.imagen, item.nombre, item.precio, item.unidadesDisponibles, item.posicion,  h.value)" >añadir</button><input [value]='1' #h type="number" min='1' pattern="^[0-9]+" id="NumProductos">
     </div>
   </template>
-   <template [ngIf]="habilitarFiltro2">
+   <template [ngIf]="sinFiltro">
     <div class = "card"  *ngFor="let item of listaArray2">
       <img src={{item.imagen}} alt="">
       <h6>Producto: {{item.nombre}}</h6>
