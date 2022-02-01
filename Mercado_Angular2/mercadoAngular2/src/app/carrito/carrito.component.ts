@@ -87,7 +87,7 @@ escribirArreglo()
       
       
        
-    if (localStorage.getItem(a)==='true')
+    if (localStorage.getItem(a)==='true')  //si el producto esta en la canasta se hacen las operaciones respectivas
       {
       total = total + c;
       this.total_1 = total;

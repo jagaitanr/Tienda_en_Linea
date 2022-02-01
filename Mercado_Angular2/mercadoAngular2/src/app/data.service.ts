@@ -70,7 +70,7 @@ export class DataService {
      return this.pagPrincipal$;
    }
 
-   cambioCanasta():Observable<any> {//método donde cambia el valor y debe ser observado
+   cambioCanasta():Observable<any> {//método donde cambia el valor de los productos que están en la canasta y debe ser observado
     this.canasta$.next();
     //console.log('entro a cambio canasta')
     return this.canasta$;
